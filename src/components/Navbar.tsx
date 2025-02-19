@@ -3,7 +3,7 @@ import Button from './Button';
 
 export default function Navbar() {
     return (
-        <header className="flex justify-between my-8 mx-16 [backdrop-filter:blur(100px)] bg-gray">
+        <header className="flex justify-between mx-64 my-8 [backdrop-filter:blur(100px)] bg-gray">
             <div className="flex gap-16">
                 <Image className="my-0" width="50" height="50" src="sesa-logo.svg" alt="SESA Logo" />
                 <div className="flex gap-16 items-center">
