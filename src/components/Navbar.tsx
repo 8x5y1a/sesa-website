@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Button from './Button';
 
 export default function Navbar() {
     return (
@@ -13,8 +14,8 @@ export default function Navbar() {
                 </div>
             </div>
             <div className="flex gap-8 items-center">
-                <a role="button" className="uppercase px-6 py-2 text-xl mono stroke-gradient clip-corner" href="#">Discord</a>
-                <a role="button" className="uppercase px-6 py-2 text-xl mono fill-gradient clip-corner" href="#">Sponsor</a>
+                <Button href="#" className="uppercase mono text-xl" variant='outline'>Discord</Button>
+                <Button href="#" className="uppercase mono text-xl">Sponsor</Button>
             </div>
         </header>
     );

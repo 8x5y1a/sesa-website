@@ -39,6 +39,14 @@
             0 100%);
 }
 
+.clip-corner-inner {
+    clip-path: polygon(2px 2px,
+            calc(100% - 2px) 2px,
+            calc(100% - 2px) calc(100% - 17px),
+            calc(100% - 17px) calc(100% - 2px),
+            2px calc(100% - 2px));
+}
+
 body {
     color: var(--foreground);
     background: var(--background);
