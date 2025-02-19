@@ -1,0 +1,45 @@
+name: Lint Project
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/lint.yml
+      - package*.json
+      - "**/*.{ts,js,tsx,jsx}"
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/lint.yml
+      - package*.json
+      - "**/*.{ts,js,tsx,jsx,cjs,cts,mjs,mts}"
+
+jobs:
+  lint:
+    name: Lint Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+      - name: npm cache
+        uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Lint project
+        run: |
+          npm install
+          npx next telemetry disable
+          npm run lint
