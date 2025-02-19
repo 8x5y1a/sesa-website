@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,11 +18,14 @@
 
 @font-face {
     font-family: 'VCR OSD Mono';
+    font-display: swap;
     src: url(/fonts/VCR_OSD_MONO_1.001.ttf);
 }
 
-.mono {
-    font-family: 'VCR OSD Mono', 'Comic Sans', ui-monospace, 'Courier New', Courier, monospace;
+@font-face {
+    font-family: 'Monocode';
+    font-display: swap;
+    src: url(/fonts/monocode-regular.ttf);
 }
 
 .stroke-gradient {
