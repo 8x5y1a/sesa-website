@@ -14,10 +14,16 @@
     }
 }
 
+
+.outline-gradient {
+    border: 2px solid #8824DC;
+}
+
 .fill-gradient {
     background: linear-gradient(55deg, #8824DC 41.93%, #B1219D 81.89%);
 }
 
+/* The clip classes are no longer used, but no harm in keeping them around */
 .clip-corner {
     clip-path: polygon(0 0,
             100% 0,
