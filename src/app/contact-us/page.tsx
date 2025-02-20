@@ -1,7 +1,7 @@
 "use client";
 
-import ContactForm from "../../components/ContactForm"; // Ensure the import path is correct
-import "../globals.css";
+import ContactForm from "./components/ContactForm"; // Ensure the import path is correct
+import "../globals.css"; // Global styles if needed
 import Image from "next/image";
 
 const ContactUsPage: React.FC = () => {
