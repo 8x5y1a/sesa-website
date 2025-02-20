@@ -1,13 +1,12 @@
-// components/ContactForm.tsx
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Button from "@/components/Button";
 
 const ContactForm: React.FC = () => {
     const router = useRouter();
 
-    // State for form inputs
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -16,9 +15,8 @@ const ContactForm: React.FC = () => {
         message: "",
     });
 
-    // Handle input changes
     const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
     ) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -27,7 +25,6 @@ const ContactForm: React.FC = () => {
         }));
     };
 
-    // Handle form submission
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -50,33 +47,30 @@ const ContactForm: React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Tell us about yourself */}
             <div>
                 <h2 className="font-vcr-osd-mono mb-4 text-[20px] text-thistle">
                     TELL US ABOUT YOURSELF
                 </h2>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    {/* First Name */}
                     <div>
                         <input
                             type="text"
                             name="firstName"
                             value={formData.firstName}
                             onChange={handleInputChange}
-                            className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                            className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-black placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                             placeholder="First name"
                             required
                         />
                     </div>
 
-                    {/* Last Name */}
                     <div>
                         <input
                             type="text"
                             name="lastName"
                             value={formData.lastName}
                             onChange={handleInputChange}
-                            className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                            className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-black placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                             placeholder="Last name"
                             required
                         />
@@ -84,7 +78,6 @@ const ContactForm: React.FC = () => {
                 </div>
             </div>
 
-            {/* How can we reach you? */}
             <div>
                 <h2 className="font-vcr-osd-mono mb-4 text-[20px] text-thistle">
                     HOW CAN WE REACH YOU? (SO WE CAN REPLY TO YOU)
@@ -95,36 +88,43 @@ const ContactForm: React.FC = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                        className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-black placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                         placeholder="Email address"
                         required
                     />
                 </div>
             </div>
 
-            {/* What’s your message about? */}
             <div>
                 <h2 className="font-heading mb-4 text-[20px] text-thistle">
                     WHAT’S YOUR MESSAGE ABOUT?
                 </h2>
                 <div>
-                    <label className="font-sans mb-2 block text-thistle"></label>
                     <select
                         name="topic"
                         value={formData.topic}
                         onChange={handleInputChange}
-                        className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                        className={`font-sans w-full rounded border border-gray-300 px-3 py-2 ${
+                            formData.topic === "" ? "text-thistle" : "text-black"
+                        } focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100`}
                         required
                     >
-                        <option value="">Select a topic</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="partnership">Partnership</option>
-                        <option value="support">Support</option>
+                        <option value="" className="text-thistle">
+                            Select a topic
+                        </option>
+                        <option value="general" className="text-black">
+                            General Inquiry
+                        </option>
+                        <option value="partnership" className="text-black">
+                            Partnership
+                        </option>
+                        <option value="support" className="text-black">
+                            Support
+                        </option>
                     </select>
                 </div>
             </div>
 
-            {/* How can we help? */}
             <div>
                 <h2 className="font-vcr-osd-mono mb-4 text-[20px] text-thistle">HOW CAN WE?</h2>
                 <div>
@@ -132,15 +132,14 @@ const ContactForm: React.FC = () => {
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="font-raleway h-32 w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                        className="font-sans h-32 w-full rounded border border-gray-300 px-3 py-2 text-black placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                         placeholder="Include as much detail as you can"
                         required
                     />
                 </div>
             </div>
 
-            {/* Privacy & Terms */}
-            <div className="font-sans text-base text-thistle">
+            <div className="font-heading text-base text-thistle">
                 <p>
                     By submitting this form, I confirm that I have read and accept the{" "}
                     <a href="#" className="underline">
@@ -150,14 +149,13 @@ const ContactForm: React.FC = () => {
                 </p>
             </div>
 
-            {/* Submit Button */}
             <div className="flex justify-start">
-                <button
+                <Button
                     type="submit"
-                    className="font-vcr-osd-mono rounded bg-blueviolet-700 px-4 py-2 uppercase text-white"
+                    className="font-heading text-xl uppercase mt-4 flex items-center gap-3"
                 >
                     Send message
-                </button>
+                </Button>
             </div>
         </form>
     );
