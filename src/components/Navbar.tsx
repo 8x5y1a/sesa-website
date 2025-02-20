@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <header className="bg-gray mx-64 my-8 flex justify-between [backdrop-filter:blur(100px)]">
-            <div className="flex gap-16">
+        <header className="flex justify-between mx-8 xl:mx-32 2xl:mx-64 my-8 [backdrop-filter:blur(100px)] bg-gray">
+            <div className="flex gap-4 lg:gap-8 xl:gap-16">
                 <Link href="/">
                     <Image
                         className="my-0"
@@ -15,7 +15,7 @@ export default function Navbar() {
                         alt="SESA Logo"
                     />
                 </Link>
-                <div className="flex items-center gap-16">
+                <div className="flex gap-4 lg:gap-8 xl:gap-16 items-center">
                     <a className="my-4 font-heading text-xl uppercase" href="#">
                         Team
                     </a>

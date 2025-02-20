@@ -3,8 +3,8 @@ import IconButton from "./IconButton";
 
 export default function Footer() {
     return (
-        <footer className="bg-gray mx-64 my-8">
-            <div className="flex justify-between [backdrop-filter:blur(100px)]">
+        <footer className="mx-8 xl:mx-32 2xl:mx-64 my-8 bg-gray">
+            <div className="flex flex-col lg:flex-row justify-between [backdrop-filter:blur(100px)]">
                 <div className="flex items-center justify-center gap-4">
                     <Image
                         className="my-0"
@@ -21,7 +21,7 @@ export default function Footer() {
                         alt="SESA Logo Text"
                     />
                 </div>
-                <div className="flex items-center gap-12">
+                <div className="flex flex-col md:flex-row md:gap-12 justify-center items-center">
                     <a className="my-4 font-heading text-xl uppercase" href="#">
                         Team
                     </a>
