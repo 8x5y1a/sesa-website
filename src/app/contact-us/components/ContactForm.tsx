@@ -63,7 +63,7 @@ const ContactForm: React.FC = () => {
                             name="firstName"
                             value={formData.firstName}
                             onChange={handleInputChange}
-                            className="font-raleway w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                            className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                             placeholder="First name"
                             required
                         />
@@ -76,7 +76,7 @@ const ContactForm: React.FC = () => {
                             name="lastName"
                             value={formData.lastName}
                             onChange={handleInputChange}
-                            className="font-raleway w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                            className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                             placeholder="Last name"
                             required
                         />
@@ -95,7 +95,7 @@ const ContactForm: React.FC = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="font-raleway w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                        className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                         placeholder="Email address"
                         required
                     />
@@ -104,16 +104,16 @@ const ContactForm: React.FC = () => {
 
             {/* What’s your message about? */}
             <div>
-                <h2 className="font-vcr-osd-mono mb-4 text-[20px] text-thistle">
+                <h2 className="font-heading mb-4 text-[20px] text-thistle">
                     WHAT’S YOUR MESSAGE ABOUT?
                 </h2>
                 <div>
-                    <label className="font-raleway mb-2 block text-thistle"></label>
+                    <label className="font-sans mb-2 block text-thistle"></label>
                     <select
                         name="topic"
                         value={formData.topic}
                         onChange={handleInputChange}
-                        className="font-raleway w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
+                        className="font-sans w-full rounded border border-gray-300 px-3 py-2 text-thistle placeholder:text-thistle focus:border-blueviolet-100 focus:ring-2 focus:ring-blueviolet-100"
                         required
                     >
                         <option value="">Select a topic</option>
@@ -140,7 +140,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             {/* Privacy & Terms */}
-            <div className="font-vcr-osd-mono text-base text-thistle">
+            <div className="font-sans text-base text-thistle">
                 <p>
                     By submitting this form, I confirm that I have read and accept the{" "}
                     <a href="#" className="underline">

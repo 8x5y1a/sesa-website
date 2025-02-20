@@ -7,7 +7,7 @@ import Image from "next/image";
 const ContactUsPage: React.FC = () => {
     return (
         <div
-            className="font-vcr-osd-mono min-h-screen p-8 text-white"
+            className="font-heading min-h-screen p-8 text-white"
             style={{
                 background: "linear-gradient(#1B1B1B, #701BB7, #8824DC, #B1219D)",
             }}
@@ -17,7 +17,7 @@ const ContactUsPage: React.FC = () => {
                 {/* Left Column (Header Content) */}
                 <div className="flex-1">
                     {/* Contact Us Text */}
-                    <div className="font-monocode !bg-clip-text text-base text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background:linear-gradient(55.37deg,_#6E1CB0,_#8E1A7D)]">
+                    <div className="font-sans !bg-clip-text text-base text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background:linear-gradient(55.37deg,_#6E1CB0,_#8E1A7D)]">
                         Contact us
                     </div>
 
@@ -25,7 +25,7 @@ const ContactUsPage: React.FC = () => {
                     <h1 className="mt-4 text-[48px] uppercase">Get in touch</h1>
 
                     {/* Questions About Our Organization */}
-                    <p className="font-raleway mt-4 max-w-[558px] text-[20px] text-thistle">
+                    <p className="font-sans mt-4 max-w-[558px] text-[20px] text-thistle">
                         Questions about our organization? Interest in collaborating with us? Send a
                         message to our email, or complete the inquiry form, and we’ll respond as
                         soon as possible.
