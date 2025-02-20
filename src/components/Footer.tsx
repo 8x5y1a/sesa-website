@@ -10,12 +10,12 @@ export default function Footer() {
                     <Image className="my-0" width="109" height="25" src="logo-text.svg" alt="SESA Logo Text" />
                 </div>
                 <div className="flex gap-12 items-center">
-                    <a className="uppercase text-xl font-mono my-4" href="#">Team</a>
-                    <a className="uppercase text-xl font-mono my-4" href="#">Events</a>
-                    <a className="uppercase text-xl font-mono my-4" href="#">Resources</a>
-                    <a className="uppercase text-xl font-mono my-4" href="#">Contact</a>
-                    <a className="uppercase text-xl font-mono my-4" href="#">Sponsor</a>
-                    <a className="uppercase text-xl font-mono my-4" href="#">Privacy &amp; Terms</a>
+                    <a className="uppercase text-xl font-heading my-4" href="#">Team</a>
+                    <a className="uppercase text-xl font-heading my-4" href="#">Events</a>
+                    <a className="uppercase text-xl font-heading my-4" href="#">Resources</a>
+                    <a className="uppercase text-xl font-heading my-4" href="#">Contact</a>
+                    <a className="uppercase text-xl font-heading my-4" href="#">Sponsor</a>
+                    <a className="uppercase text-xl font-heading my-4" href="#">Privacy &amp; Terms</a>
                 </div>
             </div>
             <div className="flex justify-between items-center">

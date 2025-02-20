@@ -13,9 +13,9 @@ export default {
                 foreground: "var(--foreground)",
             },
             fontFamily: {
-                mono: ["VCR OSD Mono", "ui-monospace", "Courier New", "Courier", "monospace"],
+                heading: ["VCR OSD Mono", "ui-monospace", "Courier New", "Courier", "monospace"],
                 sans: ["Raleway", "Arial", "sans-serif"],
-                accent: ["Monocode", "Courier New", "Courier", "monospace"],
+                mono: ["Monocode", "Courier New", "Courier", "monospace"],
             }
         },
     },
