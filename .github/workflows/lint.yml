@@ -6,7 +6,7 @@ on:
         paths:
             - .github/workflows/lint.yml
             - package*.json
-            - "**/*.{ts,js,tsx,jsx}"
+            - "**/*.{ts,js,tsx,jsx,cjs,cts,mjs,mts}"
     push:
         branches:
             - main
