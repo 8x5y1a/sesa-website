@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SESA Website",
-  description: "Created by the amazing developers at SESA!",
+    title: "SESA Website",
+    description: "Created by the amazing developers at SESA!",
 };
 
 export default function RootLayout({
