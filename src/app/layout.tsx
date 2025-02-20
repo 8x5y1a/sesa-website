@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SESA Website",
-  description: "Created by the amazing developers at SESA!",
+    title: "SESA Website",
+    description: "Created by the amazing developers at SESA!",
 };
 
 export default function RootLayout({
@@ -31,11 +31,12 @@ export default function RootLayout({
                 {/* Raleway */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-                <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+                    rel="stylesheet"
+                />
             </Head>
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
-            >
+            <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
                 <Navbar />
                 <main>{children}</main>
                 <Footer />
