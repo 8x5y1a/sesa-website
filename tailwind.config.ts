@@ -47,7 +47,7 @@ export default {
           "Courier",
           "monospace",
         ],
-        sans: ["Raleway", "Arial", "sans-serif"],
+        sans: ["var(--font-raleway)", "Arial", "sans-serif"],
         mono: ["Monocode", "Courier New", "Courier", "monospace"],
       },
     },

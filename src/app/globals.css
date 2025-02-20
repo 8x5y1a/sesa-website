@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply leading-[normal] m-0;
+}
+*,
+::before,
+::after {
+  border-width: 0;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -60,4 +69,20 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-overlay {
+  position: absolute;
+  right: 0;
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, #a122af 3px, transparent 3px),
+    linear-gradient(to bottom, #a122af 3px, transparent 3px);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.05) 10%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.7) 70%,
+    black 100%
+  );
 }
