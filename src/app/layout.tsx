@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+    title: "SESA Website",
+    description: "Created by the amazing developers at SESA!",
+};
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
