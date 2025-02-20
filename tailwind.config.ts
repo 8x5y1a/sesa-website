@@ -19,6 +19,7 @@ export default {
         blueviolet: {
           100: "#8824dc",
           200: "rgba(136, 36, 220, 0.5)",
+          700: "#6A0DAD",
         },
         darkorchid: {
           100: "#9e22ba",
