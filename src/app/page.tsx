@@ -1,101 +1,67 @@
+"use client";
+
+import { useCallback } from "react";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const Home = () => {
+  const onScrollToSection = useCallback(() => {
+    const anchor = document.querySelector("[data-scroll-to='rectangle']");
+    anchor?.scrollIntoView({ block: "start", behavior: "smooth" });
+  }, []);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="h-full bg-gray-300 text-white font-mono">
+      {/* Hero Section */}
+      <section className="relative flex items-center justify-between px-10 lg:px-20 h-screen w-full bg-black text-white">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1b1b1b] via-[#221133] to-[#160c2c]" />
+
+        {/* Content Container */}
+        <div className="relative z-10 max-w-2xl">
+          <p className="w-[471px] relative text-base font-monocode text-transparent !bg-clip-text [background:linear-gradient(55.37deg,_#8824dc,_#b1219d)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] text-left inline-block">
+            uOttawa Software Engineering Students Association
+          </p>
+          <h1 className="text-5xl leading-tight mt-4">
+            <span className="w-full relative [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]">
+              BRIDGING THE GAP
+            </span>{" "}
+            <br />
+            BETWEEN STUDENTS <br />
+            AND INDUSTRY PROFESSIONALS
+          </h1>
+          <p className="w-[552.3px] relative text-xl font-raleway text-thistle text-left flex items-center">
+            SESA connects University of Ottawa students with industry
+            professionals in software engineering, providing resources,
+            networking, and career development to ensure they can be successful.
+          </p>
+          <div className="mt-6 flex space-x-4">
+            <button className="px-6 py-3 text-base uppercase bg-gradient-to-r from-purple-600 to-pink-500 transition-all ease-in-out hover:rounded-[1.5rem]">
+              Learn More
+            </button>
+            <button
+              type="button"
+              className="transtion uppercase text-base group flex items-center justify-center bg-gradient-to-tr from-purple-500 to-pink-500 p-[1.5px] text-white transition-all ease-in-out hover:rounded-[1.5rem]"
+            >
+              <div className="flex h-full w-full px-6 py-3 items-center justify-center bg-[#1C0E2F] transition-all ease-in-out hover:rounded-[1.5rem]">
+                Get Involved
+              </div>
+            </button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* Right Side Image */}
+        <div className="relative z-10 hidden lg:block">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/Home/heroImage.png"
+            alt="SESA Group Photo"
+            className="w-full relative max-w-full overflow-hidden h-[558px] object-cover"
+            width={703}
+            height={558}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Home;
