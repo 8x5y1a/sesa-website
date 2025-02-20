@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -17,39 +17,37 @@
 }
 
 @font-face {
-    font-family: 'VCR OSD Mono';
+    font-family: "VCR OSD Mono";
     font-display: swap;
     src: url(/fonts/VCR_OSD_MONO_1.001.ttf);
 }
 
 @font-face {
-    font-family: 'Monocode';
+    font-family: "Monocode";
     font-display: swap;
     src: url(/fonts/monocode-regular.ttf);
 }
 
 .outline-gradient {
-    border: 2px solid #8824DC;
+    border: 2px solid #8824dc;
 }
 
 .fill-gradient {
-    background: linear-gradient(55deg, #8824DC 41.93%, #B1219D 81.89%);
+    background: linear-gradient(55deg, #8824dc 41.93%, #b1219d 81.89%);
 }
 
 .clip-corner {
-    clip-path: polygon(0 0,
-            100% 0,
-            100% calc(100% - 15px),
-            calc(100% - 15px) 100%,
-            0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
 }
 
 .clip-corner-inner {
-    clip-path: polygon(2px 2px,
-            calc(100% - 2px) 2px,
-            calc(100% - 2px) calc(100% - 17px),
-            calc(100% - 17px) calc(100% - 2px),
-            2px calc(100% - 2px));
+    clip-path: polygon(
+        2px 2px,
+        calc(100% - 2px) 2px,
+        calc(100% - 2px) calc(100% - 17px),
+        calc(100% - 17px) calc(100% - 2px),
+        2px calc(100% - 2px)
+    );
 }
 
 body {

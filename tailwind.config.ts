@@ -16,7 +16,7 @@ export default {
                 heading: ["VCR OSD Mono", "ui-monospace", "Courier New", "Courier", "monospace"],
                 sans: ["Raleway", "Arial", "sans-serif"],
                 mono: ["Monocode", "Courier New", "Courier", "monospace"],
-            }
+            },
         },
     },
     plugins: [],
