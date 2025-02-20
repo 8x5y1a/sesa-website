@@ -1,14 +1,14 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
+    content: [
+        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        extend: {
+            colors: {
         gray: {
           100: "#1b1b1b",
           200: "rgba(0, 0, 0, 0)",
@@ -28,15 +28,9 @@ export default {
         },
         black: "#000",
         darkmagenta: "#ac1fa0",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-      fontFamily: {
-        monocode: "Monocode",
-        "vcr-osd-mono": "'VCR OSD Mono'",
-        raleway: "Raleway",
-        "space-grotesk": "'Space Grotesk'",
-      },
+                background: "var(--background)",
+                foreground: "var(--foreground)",
+            },
       borderRadius: {
         "8xs": "5px",
       },
@@ -45,7 +39,12 @@ export default {
         xl: "20px",
         inherit: "inherit",
       },
+            fontFamily: {
+                heading: ["VCR OSD Mono", "ui-monospace", "Courier New", "Courier", "monospace"],
+                sans: ["Raleway", "Arial", "sans-serif"],
+                mono: ["Monocode", "Courier New", "Courier", "monospace"],
+            }
+        },
     },
-  },
-  plugins: [],
+    plugins: [],
 } satisfies Config;

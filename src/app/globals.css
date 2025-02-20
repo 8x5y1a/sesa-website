@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Monocode:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
 @tailwind base;
@@ -12,30 +11,21 @@ body {
 *, ::before, ::after { border-width: 0; }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@font-face {
-  font-family: 'VCR OSD Mono';
-  src: url(/fonts/VCR_OSD_MONO_1.001.ttf);
-}
-
-.mono {
-  font-family: 'VCR OSD Mono', 'Comic Sans', ui-monospace, 'Courier New', Courier, monospace;
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input::placeholder,
