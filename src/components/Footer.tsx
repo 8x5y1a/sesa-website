@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "./Button";
+import IconButton from "./IconButton";
 
 export default function Footer() {
     return (
@@ -48,7 +48,7 @@ export default function Footer() {
                     Student Association (SESA)
                 </p>
                 <div className="flex gap-4">
-                    <Button href="#" variant="outline" className="!p-3">
+                    <IconButton href="#" variant="outline">
                         {" "}
                         <Image
                             width="25"
@@ -56,8 +56,8 @@ export default function Footer() {
                             src="sesa-logo.svg"
                             alt="Instagram Logo"
                         />{" "}
-                    </Button>
-                    <Button href="#" variant="outline" className="!p-3">
+                    </IconButton>
+                    <IconButton href="#" variant="outline">
                         {" "}
                         <Image
                             width="25"
@@ -65,8 +65,8 @@ export default function Footer() {
                             src="sesa-logo.svg"
                             alt="Instagram Logo"
                         />{" "}
-                    </Button>
-                    <Button href="#" variant="outline" className="!p-3">
+                    </IconButton>
+                    <IconButton href="#" variant="outline">
                         {" "}
                         <Image
                             width="25"
@@ -74,8 +74,8 @@ export default function Footer() {
                             src="sesa-logo.svg"
                             alt="Instagram Logo"
                         />{" "}
-                    </Button>
-                    <Button href="#" variant="outline" className="!p-3">
+                    </IconButton>
+                    <IconButton href="#" variant="outline">
                         {" "}
                         <Image
                             width="25"
@@ -83,8 +83,8 @@ export default function Footer() {
                             src="sesa-logo.svg"
                             alt="Instagram Logo"
                         />{" "}
-                    </Button>
-                    <Button href="#" variant="outline" className="!p-3">
+                    </IconButton>
+                    <IconButton href="#" variant="outline">
                         {" "}
                         <Image
                             width="25"
@@ -92,8 +92,8 @@ export default function Footer() {
                             src="sesa-logo.svg"
                             alt="Instagram Logo"
                         />{" "}
-                    </Button>
-                    <Button href="#" variant="outline" className="!p-3">
+                    </IconButton>
+                    <IconButton href="#" variant="outline">
                         {" "}
                         <Image
                             width="25"
@@ -101,7 +101,7 @@ export default function Footer() {
                             src="sesa-logo.svg"
                             alt="Instagram Logo"
                         />{" "}
-                    </Button>
+                    </IconButton>
                 </div>
             </div>
         </footer>
