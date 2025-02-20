@@ -40,16 +40,15 @@ export default {
         inherit: "inherit",
       },
       fontFamily: {
-        mono: [
+        heading: [
           "VCR OSD Mono",
           "ui-monospace",
           "Courier New",
           "Courier",
           "monospace",
         ],
-        sans: ["Arial", "sans-serif"],
-        accent: ["Monocode", "Courier New", "Courier", "monospace"],
-        raleway: ["var(--font-raleway)", "sans-serif"],
+        sans: ["Raleway", "Arial", "sans-serif"],
+        mono: ["Monocode", "Courier New", "Courier", "monospace"],
       },
     },
   },

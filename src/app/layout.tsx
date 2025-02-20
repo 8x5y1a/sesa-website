@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Raleway } from "next/font/google"; // Import Raleway
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 // Load fonts
 const geistSans = Geist({
@@ -12,11 +13,6 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const raleway = Raleway({
-  variable: "--font-raleway",
   subsets: ["latin"],
 });
 
@@ -31,11 +27,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${raleway.variable}`}
-    >
-      <body className="antialiased">
+    <html lang="en">
+      <Head>
+        {/* Raleway */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
+      >
         <Navbar />
         <main>{children}</main>
         <Footer />

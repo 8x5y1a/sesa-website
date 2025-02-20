@@ -1,6 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
 
 @font-face {
   font-family: "VCR OSD Mono";
@@ -12,4 +26,38 @@
   font-family: "Monocode";
   font-display: swap;
   src: url(/fonts/monocode-regular.ttf);
+}
+
+.outline-gradient {
+  border: 2px solid #8824dc;
+}
+
+.fill-gradient {
+  background: linear-gradient(55deg, #8824dc 41.93%, #b1219d 81.89%);
+}
+
+.clip-corner {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%
+  );
+}
+
+.clip-corner-inner {
+  clip-path: polygon(
+    2px 2px,
+    calc(100% - 2px) 2px,
+    calc(100% - 2px) calc(100% - 17px),
+    calc(100% - 17px) calc(100% - 2px),
+    2px calc(100% - 2px)
+  );
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }
