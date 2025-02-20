@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
 
 @tailwind base;
@@ -34,6 +33,12 @@ body {
     src: url(/fonts/monocode-regular.ttf);
 }
 
+@font-face {
+    font-family: "Raleway";
+    font-display: swap;
+    src: url(https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap);
+}
+
 .outline-gradient {
     border: 2px solid #8824dc;
 }
@@ -65,7 +70,7 @@ body {
 input::placeholder,
 textarea::placeholder,
 select::placeholder {
-  font-family: 'raleway';
+  font-family: 'Monocode';
   color: rgba(255, 255, 255, 0.7);
   font-size: 16px;
 }
