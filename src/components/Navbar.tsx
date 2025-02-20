@@ -25,7 +25,7 @@ export default function Navbar() {
                     <a className="my-4 font-heading text-xl uppercase" href="#">
                         Resources
                     </a>
-                    <Link href="/contact-us" className="my-4 font-heading text-xl uppercase">
+                    <Link href="/ContactUsPage" className="my-4 font-heading text-xl uppercase">
                         Contact
                     </Link>
                 </div>
