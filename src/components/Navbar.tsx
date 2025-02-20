@@ -3,10 +3,10 @@ import Button from './Button';
 
 export default function Navbar() {
     return (
-        <header className="flex justify-between mx-64 my-8 [backdrop-filter:blur(100px)] bg-gray">
-            <div className="flex gap-16">
+        <header className="flex justify-between mx-8 xl:mx-32 2xl:mx-64 my-8 [backdrop-filter:blur(100px)] bg-gray">
+            <div className="flex gap-4 lg:gap-8 xl:gap-16">
                 <Image className="my-0" width="50" height="50" src="sesa-logo.svg" alt="SESA Logo" />
-                <div className="flex gap-16 items-center">
+                <div className="flex gap-4 lg:gap-8 xl:gap-16 items-center">
                     <a className="uppercase text-xl font-heading my-4" href="#">Team</a>
                     <a className="uppercase text-xl font-heading my-4" href="#">Events</a>
                     <a className="uppercase text-xl font-heading my-4" href="#">Resources</a>
