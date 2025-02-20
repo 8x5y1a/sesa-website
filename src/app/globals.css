@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 body {
   	@apply leading-[normal] m-0;
@@ -20,6 +20,40 @@ body {
         --background: #0a0a0a;
         --foreground: #ededed;
     }
+}
+
+@font-face {
+    font-family: "VCR OSD Mono";
+    font-display: swap;
+    src: url(/fonts/VCR_OSD_MONO_1.001.ttf);
+}
+
+@font-face {
+    font-family: "Monocode";
+    font-display: swap;
+    src: url(/fonts/monocode-regular.ttf);
+}
+
+.outline-gradient {
+    border: 2px solid #8824dc;
+}
+
+.fill-gradient {
+    background: linear-gradient(55deg, #8824dc 41.93%, #b1219d 81.89%);
+}
+
+.clip-corner {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+}
+
+.clip-corner-inner {
+    clip-path: polygon(
+        2px 2px,
+        calc(100% - 2px) 2px,
+        calc(100% - 2px) calc(100% - 17px),
+        calc(100% - 17px) calc(100% - 2px),
+        2px calc(100% - 2px)
+    );
 }
 
 body {
