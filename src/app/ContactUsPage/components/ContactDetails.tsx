@@ -4,12 +4,11 @@ import Image from "next/image";
 import Button from "@/components/Button";
 
 const ContactDetails = () => {
-    return (
-        <div className="flex-1">
-            <div className="!bg-clip-text font-sans text-base text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background:linear-gradient(55.37deg,_#6E1CB0,_#8E1A7D)]">
-                Contact us
-            </div>
-
+  return (
+    <div className="flex-1">
+      <div className="font-mono color-gradient">
+        Contact us
+      </div>
             <h1 className="mt-4 text-[48px] uppercase">
                 Get in{" "}
                 <span className="relative [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]">
