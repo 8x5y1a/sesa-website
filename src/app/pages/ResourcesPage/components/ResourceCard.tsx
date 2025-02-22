@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import Button from "@/components/Button";
 
 export const ResourceCard = ({
     title,
@@ -74,9 +75,13 @@ export const ResourceCard = ({
 
                     {/* Open Button */}
                     {showOpen && (
-                        <span className="bg-gradient-to-r from-blueviolet-100 to-darkmagenta bg-clip-text uppercase text-transparent opacity-100 transition-opacity">
+                        <Button
+                            href="#"
+                            className="!p-0 font-heading uppercase opacity-100"
+                            variant="ghost"
+                        >
                             Open
-                        </span>
+                        </Button>
                     )}
                 </div>
             </div>
