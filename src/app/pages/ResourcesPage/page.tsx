@@ -93,12 +93,12 @@ const ResourcesPage: FC = () => {
                         <Image
                             src="/imgs/team/ange.png"
                             alt="Ange Emmanuel"
-                            className="h-14 w-14 rounded-full object-cover"
+                            className="z-10 h-14 w-14 rounded-full object-cover"
                             width={50}
                             height={50}
                         />
                         <div>
-                            <p className="mt-4 font-bold">Ange Emmanuel</p>
+                            <p className="z-20 mt-4 font-heading text-xl">ANGE EMMANUEL</p>
                             <p className="text-sm opacity-70">Academic Lead</p>
                         </div>
                     </div>
