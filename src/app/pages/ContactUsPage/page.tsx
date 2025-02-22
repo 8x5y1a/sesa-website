@@ -14,7 +14,6 @@ const ContactUsPage: React.FC = () => {
         >
             <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row">
                 <ContactDetails />
-
                 <div className="flex-1">
                     <ContactForm />
                 </div>

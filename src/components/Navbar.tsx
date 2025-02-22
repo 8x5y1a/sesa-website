@@ -19,7 +19,7 @@ export default function Navbar() {
                     <a className="my-4 font-heading text-xl uppercase" href="#">
                         Team
                     </a>
-                    <a className="my-4 font-heading text-xl uppercase" href="#">
+                    <a href="/pages/EventsPage" className="my-4 font-heading text-xl uppercase">
                         Events
                     </a>
                     <a href="/pages/ResourcesPage" className="my-4 font-heading text-xl uppercase">
