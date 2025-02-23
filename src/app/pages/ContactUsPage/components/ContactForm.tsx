@@ -169,7 +169,7 @@ const ContactForm: React.FC = () => {
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        className={`${inputClass} md: h-32 h-48`}
+                        className={`${inputClass} md: h-48`}
                         placeholder="Include as much detail as you can"
                         required
                     />
