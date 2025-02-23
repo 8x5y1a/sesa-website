@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header = () => (
-    <div className="mb-12">
+    <div className="mb-12 text-white">
         <span className="bg-gradient-to-r from-blueviolet-100 to-darkmagenta bg-clip-text font-mono text-transparent">
             Resources
         </span>
