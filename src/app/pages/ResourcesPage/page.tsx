@@ -5,8 +5,6 @@ import Button from "@/components/Button";
 import Pagination from "../../../components/Pagination";
 import { resources } from "./utils/resourcesData";
 import Header from "./components/Header";
-import ModeToggle from "./components/ModeToggle";
-import RowSelector from "./components/RowSelector";
 import ResourceList from "./components/ResourceList";
 import Image from "next/image";
 
@@ -28,18 +26,13 @@ const ResourcesPage: FC = () => {
             {/* Main Content Container */}
             <div className="container relative z-10 mx-auto max-w-7xl px-4 py-8">
                 <Header />
-                <SearchFilterBar />
-
-                {/* Layout and Row Selection */}
-                <div className="mb-8 flex items-center justify-between">
-                    {/* Grid/Row Mode Toggle (Left) */}
-                    <ModeToggle isGridMode={isGridMode} setIsGridMode={setIsGridMode} />
-
-                    {/* Row Selection Button (Right) */}
-                    {isGridMode && (
-                        <RowSelector rowsToShow={rowsToShow} setRowsToShow={setRowsToShow} />
-                    )}
-                </div>
+                {/* Pass state and handlers to SearchFilterBar */}
+                <SearchFilterBar
+                    isGridMode={isGridMode}
+                    setIsGridMode={setIsGridMode}
+                    rowsToShow={rowsToShow}
+                    setRowsToShow={setRowsToShow}
+                />
 
                 {/* Resources Grid or Row */}
                 <ResourceList currentResources={currentResources} isGridMode={isGridMode} />

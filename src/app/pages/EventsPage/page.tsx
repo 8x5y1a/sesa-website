@@ -75,8 +75,10 @@ const EventsPage = () => {
                 />
 
                 {filteredEvents.length === 0 ? (
-                    <div className="mt-12 w-full rounded-lg border-2 border-blueviolet-100 p-8 text-start font-heading text-2xl text-white">
-                        No events found
+                    <div className="flex h-[calc(100vh-200px)] items-center justify-center">
+                        <div className="flex h-[85%] w-[100%] max-w-7xl items-center justify-center rounded-none border-4 border-blueviolet-100 p-20 text-center font-heading text-2xl text-white">
+                            No events found
+                        </div>
                     </div>
                 ) : (
                     <>
