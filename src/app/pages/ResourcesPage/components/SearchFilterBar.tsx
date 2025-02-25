@@ -222,7 +222,6 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                         <option value="">Select Course</option>
                                                         <option value="ITI1100">ITI1100</option>
                                                         <option value="CS101">CS101</option>
-                                                        <option value="MATH150">MATH150</option>
                                                     </>
                                                 )}
                                                 {key === "type" && (
