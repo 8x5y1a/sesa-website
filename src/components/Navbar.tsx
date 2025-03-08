@@ -15,12 +15,6 @@ export default function Navbar() {
     const [selectedLang, setSelectedLang] = useState("EN");
     const [isOpen, setIsOpen] = useState(false);
 
-    const gradientBorderClass = `
-        border-[1px]
-        border-solid
-        [border-image:linear-gradient(55deg,rgba(136,36,220,0.7)_41.93%,rgba(177,33,157,0.7)_81.89%)_1]
-    `;
-
     const languageItems = [
         {
             label: "EN",
@@ -106,7 +100,7 @@ export default function Navbar() {
                     <div className="relative">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className={`${gradientBorderClass} flex items-center gap-2 bg-transparent px-6 py-3 font-heading text-base uppercase text-white`}
+                            className={`outline-gradient flex items-center gap-2 bg-transparent px-6 py-3 font-heading text-base uppercase text-white`}
                         >
                             {selectedLang}
                             <Image
