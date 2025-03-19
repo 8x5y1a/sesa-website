@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { format } from "date-fns";
-import { Event } from "@/app/pages/EventsPage/utils/types";
+import { Event } from "@/app/[locale]/EventsPage/utils/types";
 import { useRef, useState, useEffect } from "react";
 
 const EventCard: React.FC<Event> = ({
