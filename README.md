@@ -4,10 +4,11 @@ This is the repository for the main SESA website.
 
 ## Getting Started
 
-First, make sure that Corepack (included with Node.js) is enabled:
+First, make sure that Corepack (included with Node.js) is enabled (if you're on Windows, run this command in a terminal as admin):
 
 ```sh
 corepack enable
+corepack prepare pnpm@latest --activate
 ```
 
 Then, start the development server:
