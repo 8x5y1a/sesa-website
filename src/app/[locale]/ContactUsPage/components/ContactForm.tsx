@@ -4,6 +4,7 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Dropdown from "@/components/Dropdown";
 import { useTranslations } from "next-intl";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const gradientBorderClass = `
   border-[1px]
@@ -27,7 +28,6 @@ const inputClass = `
 
 const ContactForm: React.FC = () => {
     const t = useTranslations("contact_us");
-
     const router = useRouter();
 
     const [formData, setFormData] = useState({
@@ -39,6 +39,8 @@ const ContactForm: React.FC = () => {
     });
 
     const [isTopicOpen, setIsTopicOpen] = useState(false);
+    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+    const [submitting, setSubmitting] = useState(false);
 
     const topicItems = [
         {
@@ -67,9 +69,7 @@ const ContactForm: React.FC = () => {
         },
     ];
 
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
-    ) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
             ...prevState,
@@ -77,10 +77,10 @@ const ContactForm: React.FC = () => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log("Submit clicked", formData, recaptchaToken);
 
-        // Basic validation
         if (
             !formData.firstName ||
             !formData.lastName ||
@@ -92,9 +92,34 @@ const ContactForm: React.FC = () => {
             return;
         }
 
-        // Simulate form submission (replace with API call)
-        console.log("Form data submitted:", formData);
-        router.push("/thank-you"); // Redirect after submission
+        if (!recaptchaToken) {
+            alert("Please complete the reCAPTCHA.");
+            return;
+        }
+
+        setSubmitting(true);
+
+        // Example: send to your API route
+        try {
+            const res = await fetch("/api/send-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...formData, recaptchaToken }),
+            });
+
+            const data = await res.json();
+            console.log("API response:", res.status, data);
+
+            if (res.ok) {
+                router.push("/[locale]-ThankYouPage");
+            } else {
+                alert("There was an error submitting the form. Please try again.");
+            }
+        } catch {
+            alert("There was an error submitting the form. Please try again.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -103,7 +128,6 @@ const ContactForm: React.FC = () => {
                 <h2 className="font-vcr-osd-mono mb-4 text-sm uppercase text-white md:text-sm lg:text-base xl:text-base">
                     {t("form_name_label")}
                 </h2>
-
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className={gradientBorderClass}>
                         <input
@@ -116,7 +140,6 @@ const ContactForm: React.FC = () => {
                             required
                         />
                     </div>
-
                     <div className={gradientBorderClass}>
                         <input
                             type="text"
@@ -135,7 +158,6 @@ const ContactForm: React.FC = () => {
                 <h2 className="font-vcr-osd-mono mb-4 text-sm uppercase text-white md:text-sm lg:text-base xl:text-base">
                     {t("form_email_label")}
                 </h2>
-
                 <div className={gradientBorderClass}>
                     <input
                         type="email"
@@ -153,7 +175,6 @@ const ContactForm: React.FC = () => {
                 <h2 className="font-vcr-osd-mono mb-4 text-sm uppercase text-white md:text-sm lg:text-base xl:text-base">
                     {t("form_subject_label")}
                 </h2>
-
                 <div className={gradientBorderClass}>
                     <div className="relative">
                         <button
@@ -174,7 +195,6 @@ const ContactForm: React.FC = () => {
                                 }`}
                             />
                         </button>
-
                         <Dropdown
                             items={topicItems}
                             isOpen={isTopicOpen}
@@ -189,7 +209,6 @@ const ContactForm: React.FC = () => {
                 <h2 className="font-vcr-osd-mono mb-4 text-sm uppercase text-white md:text-sm lg:text-base xl:text-base">
                     {t("form_body_label")}
                 </h2>
-
                 <div className={gradientBorderClass}>
                     <textarea
                         name="message"
@@ -212,12 +231,22 @@ const ContactForm: React.FC = () => {
                 </p>
             </div>
 
+            {/* reCAPTCHA */}
+            <div className="mb-8 flex justify-center">
+                <ReCAPTCHA
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    onChange={(token: string | null) => setRecaptchaToken(token)}
+                    theme="dark"
+                />
+            </div>
+
             <div className="flex justify-end">
                 <Button
                     type="submit"
                     className="mt-4 flex items-center gap-3 font-heading text-xl uppercase"
+                    disabled={submitting}
                 >
-                    {t("send_message")}
+                    {submitting ? t("sending") : t("send_message")}
                 </Button>
             </div>
         </form>
