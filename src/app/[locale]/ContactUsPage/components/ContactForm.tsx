@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Dropdown from "@/components/Dropdown";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const gradientBorderClass = `
@@ -29,6 +29,7 @@ const inputClass = `
 const ContactForm: React.FC = () => {
     const t = useTranslations("contact_us");
     const router = useRouter();
+    const locale = useLocale();
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -45,25 +46,25 @@ const ContactForm: React.FC = () => {
     const topicItems = [
         {
             label: "General Inquiry",
-            value: "general",
+            value: "General Inquiry",
             onClick: () => {
-                setFormData(prev => ({ ...prev, topic: "general" }));
+                setFormData(prev => ({ ...prev, topic: "General Inquiry" }));
                 setIsTopicOpen(false);
             },
         },
         {
             label: "Partnership",
-            value: "partnership",
+            value: "Partnership",
             onClick: () => {
-                setFormData(prev => ({ ...prev, topic: "partnership" }));
+                setFormData(prev => ({ ...prev, topic: "Partnership" }));
                 setIsTopicOpen(false);
             },
         },
         {
             label: "Support",
-            value: "support",
+            value: "Support",
             onClick: () => {
-                setFormData(prev => ({ ...prev, topic: "support" }));
+                setFormData(prev => ({ ...prev, topic: "Support" }));
                 setIsTopicOpen(false);
             },
         },
@@ -99,7 +100,6 @@ const ContactForm: React.FC = () => {
 
         setSubmitting(true);
 
-        // Example: send to your API route
         try {
             const res = await fetch("/api/send-email", {
                 method: "POST",
@@ -111,7 +111,7 @@ const ContactForm: React.FC = () => {
             console.log("API response:", res.status, data);
 
             if (res.ok) {
-                router.push("/[locale]-ThankYouPage");
+                router.push(`/${locale}/ThankYouPage`);
             } else {
                 alert("There was an error submitting the form. Please try again.");
             }

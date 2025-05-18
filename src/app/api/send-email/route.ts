@@ -38,7 +38,22 @@ Last Name: ${lastName}
 Email: ${email}
 Topic: ${topic}
 Message: ${message}
-            `,
+    `,
+            html: `
+        <div style="font-family: Arial, sans-serif; font-size: 16px; color: #222; background: #faf8ff; padding: 24px; border-radius: 10px;">
+            <h2 style="color: #8824dc; margin-bottom: 16px;">Contact Form Submission</h2>
+            <p><strong>First Name:</strong> ${firstName}</p>
+            <p><strong>Last Name:</strong> ${lastName}</p>
+            <p><strong>Email:</strong> <a href="mailto:${email}" style="color:#8824dc;">${email}</a></p>
+            <p><strong>Topic:</strong> ${topic}</p>
+            <div style="margin-top: 18px;">
+                <strong>Message:</strong>
+                <div style="background: #fff; border-radius: 6px; padding: 12px 16px; margin-top: 6px; color: #333; white-space: pre-line;">
+                    ${message}
+                </div>
+            </div>
+        </div>
+    `,
         });
 
         return NextResponse.json({ success: true });
