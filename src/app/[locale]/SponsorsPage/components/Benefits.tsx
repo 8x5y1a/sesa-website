@@ -1,5 +1,6 @@
 "use client";
 
+import IconButton from "@/components/IconButton";
 import Image from "next/image";
 
 export default function Benefits() {
@@ -28,33 +29,58 @@ export default function Benefits() {
     ];
 
     return (
-        <div className="flex min-h-screen flex-col justify-center space-y-10 px-40 py-20">
-            {/* Header Section */}
-            <p className="font-monocode relative inline-block !bg-clip-text text-base text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background:linear-gradient(55.37deg,_#8824dc,_#b1219d)]">
-                Benefits
-            </p>
+        <div className="relative flex min-h-screen flex-col justify-center space-y-5 px-40 py-20">
+            {/* Header + Arrows Container */}
+            <div className="flex items-start justify-between">
+                <div className="w-1/2">
+                    <p className="color-gradient relative font-mono text-base">Benefits</p>
+                    <h2 className="mb-4 font-heading text-3xl uppercase text-white">
+                        <span className="block md:inline">CONNECT WITH </span>
+                        <span className="relative block md:inline">
+                            THE NEXT
+                            <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
+                        </span>{" "}
+                        <span className="relative block md:inline">
+                            GENERATION
+                            <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
+                        </span>
+                        <span className="block md:inline"> OF SOFTWARE ENGINEERS</span>
+                    </h2>
 
-            <h2 className="max-w-4xl font-heading text-3xl uppercase leading-snug text-white">
-                <span className="block md:inline">CONNECT WITH </span>
-                <span className="relative block md:inline">
-                    THE NEXT GENERATION
-                    <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
-                </span>
-                <span className="block md:inline"> OF SOFTWARE ENGINEERS</span>
-            </h2>
+                    <p className="mb-4 max-w-2xl text-base leading-tight text-thistle">
+                        Without our sponsors and partners, we would not be able to fund our events
+                        and projects that provide SEG students with academic opportunities and
+                        workplace experiences.
+                    </p>
+                </div>
 
-            <p className="text-md max-w-2xl text-thistle">
-                Without our sponsors and partners, we would not be able to fund our events and
-                projects that provide SEG students with academic opportunities and workplace
-                experiences.
-            </p>
+                {/* Arrows in top right */}
+                <div className="flex gap-2 pt-6">
+                    <IconButton variant="outline">
+                        <Image
+                            src="/resources-page/arrow_backword.svg"
+                            width={25}
+                            height={25}
+                            alt="Left"
+                        />
+                    </IconButton>
+                    <IconButton variant="outline">
+                        <Image
+                            src="/resources-page/arrow_forward.svg"
+                            width={25}
+                            height={25}
+                            alt="Right"
+                        />
+                    </IconButton>
+                </div>
+            </div>
 
             {/* Cards */}
-            <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="mt-10 grid h-[450px] grid-cols-1 gap-8 md:grid-cols-3">
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        className="overflow-hidden border-[1px] border-solid text-left text-white [border-image:linear-gradient(55deg,rgba(136,36,220,0.3)_41.93%,rgba(177,33,157,0.3)_81.89%)_1]"
+                        className="overflow-hidden border-[1px] border-solid text-left text-white backdrop-blur-super [border-image:linear-gradient(55deg,rgba(136,36,220,0.3)_41.93%,rgba(177,33,157,0.3)_81.89%)_1]"
                     >
                         <Image
                             src={card.image}
@@ -64,41 +90,24 @@ export default function Benefits() {
                             className="h-48 w-full object-cover"
                         />
                         <div className="p-4">
-                            {/* Icon */}
-                            <Image
-                                src={card.icon}
-                                alt={`${card.title} icon`}
-                                width={24}
-                                height={24}
-                                className="mb-3"
-                            />
-                            <div className="text-3lg mb-2 font-heading uppercase leading-snug text-white">
+                            <div className="my-3 inline-block border-[1px] border-solid [border-image:linear-gradient(55deg,rgba(136,36,220,0.3)_41.93%,rgba(177,33,157,0.3)_81.89%)_1]">
+                                <Image
+                                    src={card.icon}
+                                    alt={`${card.title} icon`}
+                                    width={24}
+                                    height={24}
+                                    className="m-3"
+                                />
+                            </div>
+                            <div className="mb-2 font-heading text-lg uppercase leading-snug text-white">
                                 {card.title}
                             </div>
-                            <p className="text-sm text-thistle">{card.description}</p>
+                            <p className="font-sans text-lg leading-snug text-thistle">
+                                {card.description}
+                            </p>
                         </div>
                     </div>
                 ))}
-            </div>
-
-            {/* Nav Arrows (optional placeholders) */}
-            <div className="mt-10 flex gap-4">
-                <button className="rounded border border-white p-2 transition hover:bg-white">
-                    <Image
-                        src="/resources-page/arrow_backword.svg"
-                        alt="Previous"
-                        width={24}
-                        height={24}
-                    />
-                </button>
-                <button className="rounded border border-white p-2 transition hover:bg-white">
-                    <Image
-                        src="/resources-page/arrow_forward.svg"
-                        alt="Next"
-                        width={24}
-                        height={24}
-                    />
-                </button>
             </div>
         </div>
     );
