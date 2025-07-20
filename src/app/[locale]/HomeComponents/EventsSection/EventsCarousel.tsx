@@ -50,12 +50,12 @@ const EventsCarousel = ({
     };
 
     return (
-        <div className="mt-12 flex flex-col overflow-hidden">
+        <div className="flex flex-col overflow-hidden">
             {/* Scrollable Event Cards */}
             <div className="relative w-full">
                 <div
                     ref={items}
-                    className="flex w-full items-center gap-8 overflow-hidden scroll-smooth md:px-32 2xl:px-72"
+                    className="flex items-stretch gap-4 overflow-hidden scroll-smooth"
                     style={{
                         maskImage:
                             "linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%)",
@@ -64,14 +64,7 @@ const EventsCarousel = ({
                     }}
                 >
                     {events.map((event, index) => (
-                        <div
-                            key={index}
-                            style={{
-                                width: `${CARD_WIDTH}px`,
-                                minWidth: `${CARD_WIDTH}px`,
-                            }}
-                            className="h-full min-h-full"
-                        >
+                        <div key={index}>
                             <EventCard {...event} />
                         </div>
                     ))}
