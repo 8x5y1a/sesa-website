@@ -2,7 +2,7 @@
 
 import EventCard from "./EventCard";
 import { useEffect, useRef } from "react";
-import { events } from "@/app/[locale]/EventsPage/utils/eventData";
+import { events } from "@/app/data/Events";
 
 const CARD_WIDTH = 350;
 
@@ -17,7 +17,6 @@ const EventsCarousel = ({
 }) => {
     const items = useRef<HTMLDivElement>(null);
 
-    // When Nav buttons from Events.tsx are pressed, call scrollItems
     useEffect(() => {
         setScrollFunction(() => scrollItems);
     }, [setScrollFunction]);
@@ -32,7 +31,6 @@ const EventsCarousel = ({
         }
     };
 
-    // Add scroll event listener for checking position of carousel
     useEffect(() => {
         const carousel = items.current;
         if (carousel) {
@@ -40,7 +38,7 @@ const EventsCarousel = ({
             return () => carousel.removeEventListener("scroll", checkScrollPosition);
         }
     });
-    // Check scroll position and update state
+
     const checkScrollPosition = () => {
         if (items.current) {
             const { scrollLeft, scrollWidth, clientWidth } = items.current;
