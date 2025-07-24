@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import CircleImage from "@/components/CircleImage";
+import { TeamBadgeStack } from "@/components/TeamBadgeStack";
 import Metric from "@/components/Metric";
 import Image from "next/image";
 import TeamMembers from "./TeamMembers";
@@ -13,11 +13,16 @@ import localeParams from "../../data/locales";
 export const generateStaticParams = localeParams;
 
 export default function AboutPage() {
-    const images = [
-        "/imgs/team/ange.webp",
-        "/imgs/team/ange.webp",
-        "/imgs/team/ange.webp",
-        "/imgs/team/ange.webp",
+    const memberImages = ["/imgs/team/rolf.webp", "/imgs/team/asad.webp", "/imgs/team/rayen.webp"];
+    const beyonSesaCompanies = [
+        { src: "/imgs/about/beyond-sesa/dropbox.webp", alt: "Dropbox", width: 75, height: 75 },
+        { src: "/imgs/about/beyond-sesa/meta.webp", alt: "Meta", width: 150, height: 75 },
+        { src: "/imgs/about/beyond-sesa/cisco.webp", alt: "Cisco", width: 100, height: 75 },
+        { src: "/imgs/about/beyond-sesa/amazon.webp", alt: "Amazon", width: 100, height: 75 },
+        { src: "/imgs/about/beyond-sesa/google.webp", alt: "Google", width: 100, height: 75 },
+        { src: "/imgs/about/beyond-sesa/apple.webp", alt: "Apple", width: 120, height: 75 },
+        { src: "/imgs/about/beyond-sesa/shopify.webp", alt: "Shopify", width: 140, height: 75 },
+        { src: "/imgs/about/beyond-sesa/ibm.webp", alt: "IBM", width: 100, height: 75 },
     ];
 
     const codirectors = useMemo(
@@ -55,7 +60,7 @@ export default function AboutPage() {
                     <h1 className="max-w-96 font-heading text-4xl uppercase">
                         {t("inspiring_heading")}
                     </h1>
-                    <p className="max-w-[28rem] text-gray-400">{t("inspiring_blurb")}</p>
+                    <p className="max-w-[28rem] text-thistle">{t("inspiring_blurb")}</p>
                     <div className="my-2 flex gap-2 font-heading uppercase">
                         <Button href="#introducing-our-team" className="font-heading uppercase">
                             {t("meet_the_team")}
@@ -69,16 +74,8 @@ export default function AboutPage() {
                             {t("join_our_family")}
                         </Button>
                     </div>
-                    <div className="flex flex-nowrap items-center">
-                        {images.map((src, i) => (
-                            <CircleImage
-                                src={src}
-                                key={`profile:${i}`}
-                                alt="Profile picture"
-                                size={56}
-                                className={(i & 1) === 1 ? "-m-5" : undefined}
-                            />
-                        ))}
+                    <div className="ml-3 flex flex-nowrap items-center">
+                        <TeamBadgeStack imgs={memberImages} />
                     </div>
                 </div>
                 {/* Images (TODO) */}
@@ -92,7 +89,7 @@ export default function AboutPage() {
                     />
                 </div>
                 {/* "Who are we" */}
-                <div className="my-8 flex max-w-[28rem] flex-col gap-2 md:ml-[50%]">
+                <div className="my-8 flex max-w-[28rem] flex-col gap-2 md:ml-[50%] md:mt-28">
                     <p className="color-gradient font-mono">{t("who_are_we")}</p>
                     <h1 className="font-heading text-3xl uppercase">
                         {t("who_are_we_heading")}{" "}
@@ -101,10 +98,10 @@ export default function AboutPage() {
                             <div className="highlight-gradient" />
                         </span>
                     </h1>
-                    <p className="text-gray-400">
+                    <p className="text-thistle">
                         <b>{t("who_are_we_p1_bold")}</b>, {t("who_are_we_p1")}{" "}
                     </p>
-                    <p className="my-2 text-gray-400">
+                    <p className="my-2 text-thistle">
                         <b>{t("who_are_we_p2_bold")}</b> {t("who_are_we_p2")}
                     </p>
                     <Button href="#introducing-our-team" className="w-fit font-heading uppercase">
@@ -112,8 +109,8 @@ export default function AboutPage() {
                     </Button>
                 </div>
                 {/* Figures */}
-                <div className="flex justify-center">
-                    <div className="grid w-fit grid-cols-1 place-items-center gap-0 md:grid-cols-2 lg:grid-cols-4">
+                <div className="flex justify-center md:mb-28">
+                    <div className="grid w-fit grid-cols-1 place-items-center gap-0 md:grid-cols-2 md:grid-cols-4">
                         <Metric
                             className="!w-64"
                             figure="3500+"
@@ -146,7 +143,7 @@ export default function AboutPage() {
                         </span>
                     </h1>
                     <div className="max-w-[28rem]">
-                        <p className="text-gray-400">
+                        <p className="text-thistle">
                             <b>{t("what_do_we_do_p_bold")}</b> {t("what_do_we_do_p")}
                         </p>
                     </div>
@@ -155,7 +152,7 @@ export default function AboutPage() {
                     </Button>
                 </div>
                 {/* Cards for "What do we do" */}
-                <div className="mb-8 flex w-full gap-8 overflow-x-scroll lg:justify-center">
+                <div className="mb-8 flex w-full gap-8 overflow-x-scroll md:justify-center">
                     <WhatWeDoCard
                         imageHref="/imgs/about/social-events.webp"
                         icon={
@@ -205,7 +202,7 @@ export default function AboutPage() {
                 {/* Introducing our team */}
                 <div
                     id="introducing-our-team"
-                    className="align-center flex scroll-mt-28 flex-col items-center gap-2 text-center"
+                    className="align-center flex scroll-mt-28 flex-col items-center gap-2 text-center md:mt-28"
                 >
                     <p className="color-gradient font-mono">{t("introducing_our_team")}</p>
                     <h1 className="font-heading text-3xl uppercase">
@@ -215,12 +212,12 @@ export default function AboutPage() {
                         </span>{" "}
                         {t("introducing_our_team_heading")}
                     </h1>
-                    <p className="max-w-[32rem] text-lg leading-tight text-gray-400">
+                    <p className="max-w-[32rem] text-lg leading-tight text-thistle">
                         {t("introducing_our_team_blurb")}
                     </p>
                 </div>
                 {/* TODO: Add the `sticky` class once a way to make it not super ugly is found */}
-                <div className="top-[5.6rem] z-10 mt-4 grid grid-flow-col grid-rows-4 text-center font-heading uppercase backdrop-blur-sm md:grid-rows-2 lg:grid-rows-1">
+                <div className="top-[5.6rem] z-10 mt-4 grid grid-flow-col grid-rows-4 text-center font-heading uppercase backdrop-blur-sm md:grid-rows-2">
                     <Button variant="outline" href="#co-directors">
                         {tOurTeam("codirectors")}
                     </Button>
@@ -245,7 +242,7 @@ export default function AboutPage() {
                 </div>
                 <br />
                 {/* TODO: Add horizontal scrolling if the members don't all fit onscreen. */}
-                <div className="flex flex-col gap-8">
+                <div className="mt-16 flex flex-col gap-24">
                     <TeamMembers
                         title={tOurTeam("codirectors")}
                         description={tOurTeam("codirectors_desc")}
@@ -277,72 +274,83 @@ export default function AboutPage() {
                         people={academic}
                     />
                 </div>
-            </div>
-            {/* Beyond SESA */}
-            <div className="align-center flex flex-col items-center gap-2 text-center">
-                <p className="color-gradient font-mono">{t("our_previous_partners")}</p>
-                <h1 className="font-heading text-3xl uppercase">
-                    <span className="relative inline-block">
-                        {t("our_previous_partners_heading_hl")}
-                        <div className="highlight-gradient" />
-                    </span>
-                </h1>
-                <p className="max-w-[32rem] text-lg leading-tight text-gray-400">
-                    <b>{t("our_previous_partners_p_bold")}</b>, {t("our_previous_partners_p")}{" "}
-                </p>
-                <div className="flex items-center justify-center text-center">
-                    <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-                        {/* This just fills the grid with 8 Warp logos for the time being */}
-                        {Array(8)
-                            .fill(0)
-                            .map((_, i) => (
+
+                {/* Beyond SESA */}
+                <div className="align-center mt-24 flex flex-col items-center gap-3 text-center">
+                    <p className="color-gradient font-mono">{t("our_previous_partners")}</p>
+                    <h1 className="font-heading text-3xl uppercase">
+                        <span className="relative inline-block">
+                            {t("our_previous_partners_heading_hl")}
+                            <div className="highlight-gradient" />
+                        </span>
+                    </h1>
+                    <p className="max-w-[32rem] text-lg leading-snug text-thistle">
+                        <b>{t("our_previous_partners_p_bold")}</b>,{" "}
+                        {t("our_previous_partners_p")}{" "}
+                    </p>
+                    <div className="mt-10 flex items-center justify-center text-center">
+                        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+                            {beyonSesaCompanies.map((company, i) => (
                                 <div
                                     className="outline-gradient flex h-36 w-64 items-center justify-center"
                                     key={`partners:${i}`}
                                 >
                                     <Image
-                                        src="/sponsors/warp.svg"
-                                        width={192}
-                                        height={75}
-                                        alt="Warp Logo"
-                                        className="w-48"
+                                        src={company.src}
+                                        width={company.width}
+                                        height={company.height}
+                                        alt={company.alt}
+                                        className="max-w-[150px] brightness-0 invert filter"
                                     />
                                 </div>
                             ))}
+                        </div>
                     </div>
                 </div>
             </div>
             {/* Be a part of our family */}
-            <div className="mb-24 mt-16 flex flex-col items-center justify-center gap-8 px-4 lg:flex-row">
-                <div className="flex flex-col gap-2">
+            <section className="relative my-10 flex min-h-[60vh] w-full flex-col items-center justify-center gap-8 text-white md:my-32 md:flex-row md:justify-between md:ps-32 2xl:ps-96">
+                {/* Grid Gradient Back */}
+                <div className="grid-overlay-right md:h-[43.93rem] md:w-[53vw]"></div>
+
+                {/* Content Container */}
+                <div className="relative z-10 max-w-2xl px-4 md:px-0">
                     <p className="color-gradient font-mono">{t("our_family")}</p>
-                    <h1 className="max-w-[28rem] font-heading text-3xl uppercase">
+                    <h1 className="mt-4 max-w-[28rem] font-heading text-3xl uppercase leading-tight">
                         {t("our_family_heading")}{" "}
                         <span className="relative inline-block">
                             {t("our_family_heading_hl")}
                             <div className="highlight-gradient" />
                         </span>
                     </h1>
-                    <p className="max-w-[28rem] text-lg leading-tight text-gray-400">
+                    <p className="mt-4 max-w-[28rem] font-sans text-base text-thistle md:text-lg md:leading-tight">
                         <b>{t("our_family_p_bold")}</b>. {t("our_family_p")}
                     </p>
-                    <Button
-                        href="/ContactUsPage"
-                        className="my-4 w-fit font-heading uppercase"
-                        disabled
-                    >
-                        {t("apply_now")}
-                    </Button>
-                    <p className="max-w-[28rem] font-mono text-gray-400">{t("no_more_apps")}</p>
+                    <div className="mt-6 flex flex-col space-y-2 font-heading">
+                        <Button
+                            href="/ContactUsPage"
+                            className="w-fit font-heading text-lg uppercase"
+                            disabled
+                        >
+                            {t("apply_now")}
+                        </Button>
+                        <p className="max-w-[28rem] font-mono text-sm text-thistle">
+                            {t("no_more_apps")}
+                        </p>
+                    </div>
                 </div>
-                <Image
-                    className="outline-gradient h-[500px] w-[700px] object-cover"
-                    src="/imgs/about/team-1.webp"
-                    width={700}
-                    height={500}
-                    alt="Team picture"
-                />
-            </div>
+
+                {/* Right Side Image - Centered on mobile, touches right edge on desktop */}
+                <div className="relative z-10">
+                    <Image
+                        src="/imgs/about/team-1.webp"
+                        alt="Team picture"
+                        className="outline-gradient h-[400px] w-auto object-cover md:h-[500px]"
+                        width={700}
+                        height={500}
+                    />
+                </div>
+            </section>
         </div>
     );
 }
