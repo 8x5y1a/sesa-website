@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "./Button";
+import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 
@@ -86,57 +86,48 @@ export default function Footer() {
                         </p>
 
                         <div className="flex items-start justify-center gap-2">
-                            <Button
-                                className="!p-3"
-                                variant="outline"
-                                href="https://www.instagram.com/uottawasesa/"
-                                target="_blank"
-                            >
-                                <Image
-                                    src="/icons/instagram-plain.svg"
-                                    width={25}
-                                    height={25}
-                                    alt="Instagram Logo"
-                                />
+                            <Button size="icon" variant="outline" asChild>
+                                <a href="https://www.instagram.com/uottawasesa/" target="_blank">
+                                    <Image
+                                        src="/icons/instagram-plain.svg"
+                                        width={25}
+                                        height={25}
+                                        alt="Instagram Logo"
+                                    />
+                                </a>
                             </Button>
-                            <Button
-                                className="!p-3"
-                                variant="outline"
-                                href="https://discord.com/invite/atYdx5HHCs"
-                                target="_blank"
-                            >
-                                <Image
-                                    src="/icons/discord-plain.svg"
-                                    width={25}
-                                    height={25}
-                                    alt="Discord Logo"
-                                />
+                            <Button size="icon" variant="outline" asChild>
+                                <a href="https://discord.com/invite/atYdx5HHCs" target="_blank">
+                                    <Image
+                                        src="/icons/discord-plain.svg"
+                                        width={25}
+                                        height={25}
+                                        alt="Discord Logo"
+                                    />
+                                </a>
                             </Button>
-                            <Button
-                                className="!p-3"
-                                variant="outline"
-                                href="https://www.linkedin.com/company/software-engineering-students-association/"
-                                target="_blank"
-                            >
-                                <Image
-                                    src="/icons/linkedin-plain.svg"
-                                    width={25}
-                                    height={25}
-                                    alt="LinkedIn Logo"
-                                />
+                            <Button size="icon" variant="outline" asChild>
+                                <a
+                                    href="https://www.linkedin.com/company/software-engineering-students-association/"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src="/icons/linkedin-plain.svg"
+                                        width={25}
+                                        height={25}
+                                        alt="LinkedIn Logo"
+                                    />
+                                </a>
                             </Button>
-                            <Button
-                                className="!p-3"
-                                variant="outline"
-                                href="https://www.youtube.com/@uottawasesa52"
-                                target="_blank"
-                            >
-                                <Image
-                                    src="/icons/youtube-plain.svg"
-                                    width={25}
-                                    height={25}
-                                    alt="YouTube Logo"
-                                />
+                            <Button size="icon" variant="outline" asChild>
+                                <a href="https://www.youtube.com/@uottawasesa52" target="_blank">
+                                    <Image
+                                        src="/icons/youtube-plain.svg"
+                                        width={25}
+                                        height={25}
+                                        alt="YouTube Logo"
+                                    />
+                                </a>
                             </Button>
                         </div>
                     </div>
@@ -162,11 +153,11 @@ export default function Footer() {
                     />
                 </div>
                 <div className="flex items-center gap-2 text-sm text-white md:text-base">
-                    <Button href="#" variant="ghost-plain" className="w-max font-heading uppercase">
-                        {t("back_to_top")}
+                    <Button variant="ghost-plain" className="h-min font-heading uppercase" asChild>
+                        <a href="#">{t("back_to_top")}</a>
                     </Button>
                     {/* TODO: Make this a real dropdown */}
-                    <Button href="#" variant="outline" className="w-max font-heading uppercase">
+                    <Button variant="outline" className="h-min font-heading uppercase">
                         English
                     </Button>
                 </div>
