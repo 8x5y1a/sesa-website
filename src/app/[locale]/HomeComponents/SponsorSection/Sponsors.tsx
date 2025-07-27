@@ -14,11 +14,8 @@ const Sponsors = () => {
                         </p>
                         <h1 className="mx-auto mt-4 max-w-[30ch] font-heading text-2xl uppercase leading-tight text-white md:text-5xl">
                             <span className="relative inline-block">
-                                <span className="relative inline-block">
-                                    Trusted and sponsored
-                                    <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
-                                </span>{" "}
-                                by the best in the game
+                                <span className="highlight-text">Trusted and sponsored</span> by the
+                                best in the game
                             </span>
                             <br />
                         </h1>

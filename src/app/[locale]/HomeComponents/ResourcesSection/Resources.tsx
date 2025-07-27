@@ -15,10 +15,7 @@ const Resources = () => {
                     </p>
                     <h1 className="font-heading text-2xl uppercase leading-tight md:text-5xl">
                         Resources at your&nbsp;
-                        <span className="relative inline-block">
-                            Fingertips
-                            <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
-                        </span>
+                        <span className="highlight-text">Fingertips</span>
                     </h1>
                     <p className="font-sans text-base text-thistle md:text-lg">
                         Our academic team actively organize free resources to support software

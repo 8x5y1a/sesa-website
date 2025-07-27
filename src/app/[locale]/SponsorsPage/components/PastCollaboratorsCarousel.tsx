@@ -25,11 +25,7 @@ const PastCollaboratorsCarousel = () => {
                     Our previous partners
                 </p>
                 <div className="font-heading text-2xl uppercase text-white">
-                    <span className="relative inline-block">
-                        PAST
-                        <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
-                    </span>{" "}
-                    COLLABORATORS SINCE 2014
+                    <span className="highlight-text">PAST</span> COLLABORATORS SINCE 2014
                 </div>
                 <p className="max-w-2xl text-base text-thistle">
                     We&apos;ve had the privilege of working with over 20+ big and small companies

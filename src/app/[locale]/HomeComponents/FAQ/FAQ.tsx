@@ -21,10 +21,7 @@ const FAQ = () => {
                     <p className="font-monocode color-gradient">Frequently asked questions</p>
                     <h1 className="text-center font-heading text-2xl uppercase leading-tight md:text-5xl">
                         Got Questions?&nbsp;
-                        <span className="relative inline-block">
-                            We&apos;ve got answers!
-                            <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
-                        </span>
+                        <span className="highlight-text">We&apos;ve got answers!</span>
                     </h1>
                     <p className="max-w-sm text-center font-sans text-base text-thistle md:max-w-lg md:text-lg xl:max-w-xl xl:text-xl">
                         We have A’s to your Q’s below. If you still have questions, contact us and

@@ -20,11 +20,8 @@ const Team = () => {
                     </div>
                     <h1 className="text-center font-heading text-2xl uppercase leading-tight md:text-3xl xl:text-5xl">
                         The&nbsp;
-                        <span className="relative inline-block">
-                            Univeristy of Ottawa&apos;s
-                            <div className="absolute right-0 top-0 h-full w-0 animate-highlight [background:linear-gradient(55.37deg,_rgba(136,_36,_220,_0.25),_rgba(177,_33,_97,_0.25))]"></div>
-                        </span>{" "}
-                        Software Engineering Students Association
+                        <span className="highlight-text">University of Ottawa&apos;s</span> Software
+                        Engineering Students Association
                     </h1>
                     <p className="text-center font-sans text-base text-thistle md:text-lg xl:text-xl">
                         Our communications team meticulously crafted the web design, while our
