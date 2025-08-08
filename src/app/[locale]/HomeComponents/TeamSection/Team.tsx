@@ -16,7 +16,7 @@ const Team = () => {
                 {/* Decorations */}
                 <div className="pointer-events-none z-0 select-none">
                     {/* Light gradient */}
-                    <div className="fade-from-center-bg absolute left-1/2 h-[112.8rem] w-full -translate-x-1/2 bg-blueviolet-100 bg-opacity-25 blur-xl md:top-[-50rem] md:w-[130rem] 2xl:top-[-53rem]" />
+                    <div className="fade-from-center-bg absolute left-1/2 top-[-29rem] h-[112.8rem] w-full -translate-x-1/2 bg-blueviolet-100 bg-opacity-25 blur-xl md:top-[-50rem] md:w-[130rem] 2xl:top-[-53rem]" />
                     {/* Warm gradient */}
                     <div className="fade-from-center-bg absolute bottom-[-15rem] left-1/2 h-[55rem] w-full -translate-x-1/2 bg-[#B1219D] bg-opacity-30 blur-xl md:w-[80vw]" />
 
@@ -38,17 +38,17 @@ const Team = () => {
 
                     <Image
                         src="/decoration/star-faded.svg"
-                        className="absolute right-[2rem] top-[8rem] rotate-[30deg] transform md:right-[10rem] md:top-[-1rem]"
+                        className="absolute right-[2rem] top-[1rem] rotate-[30deg] transform md:right-[10rem] md:top-[-1rem]"
                         width={60}
                         height={60}
                         alt=""
                     />
 
-                    <div className="fade-from-center-tunnel-home absolute top-[10rem] z-0 hidden h-[460px] w-full overflow-hidden md:left-[7rem] md:block 2xl:left-[40rem]">
+                    <div className="fade-from-center-tunnel-home absolute bottom-[5rem] z-0 hidden h-[580px] w-full overflow-hidden md:left-[-4rem] md:block 2xl:left-[30rem]">
                         <Image
                             src="/decoration/tunnel.svg"
-                            className="absolute left-0 top-0 object-cover"
-                            width={1300}
+                            className="absolute left-0 top-0 object-cover opacity-85"
+                            width={1500}
                             height={300}
                             alt=""
                         />
@@ -67,22 +67,19 @@ const Team = () => {
                         <Image src="/logo-filled.svg" width={50} height={50} alt="sesa" />
                         <Image src="/logo-text.svg" width={111} height={50} alt="sesa" />
                     </div>
-                    <h1 className="text-center font-heading text-2xl uppercase leading-tight md:text-3xl xl:text-5xl">
+                    <h1 className="text-center font-heading text-2xl uppercase leading-tight md:text-5xl">
                         The&nbsp;
                         <span className="highlight-text">University of Ottawa&apos;s</span> Software
                         Engineering Students Association
                     </h1>
-                    <p className="text-center font-sans text-base text-thistle md:text-lg xl:text-xl">
+                    <p className="w-1/2 text-center font-sans text-base text-thistle md:text-xl">
                         Our communications team meticulously crafted the web design, while our
                         development team built it with heart.
                     </p>
                 </div>
 
                 <div className="z-20 flex justify-center gap-4 px-8 text-center font-heading">
-                    <Button
-                        className="w-full font-heading text-sm uppercase sm:w-max md:text-lg xl:text-xl"
-                        asChild
-                    >
+                    <Button className="w-full font-heading uppercase sm:w-max" asChild>
                         <a href="#">
                             Become a sponsor <span className="text-gray opacity-50">{">"}</span>
                         </a>
