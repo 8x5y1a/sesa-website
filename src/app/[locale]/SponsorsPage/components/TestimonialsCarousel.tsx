@@ -40,9 +40,9 @@ const sponsorsData = [
     // },
 ];
 
-const SponsorCard = () => {
+const TestimonialsCarousel = () => {
     return (
-        <div className="my-20 flex flex-col justify-start gap-12 px-4 md:my-36 md:px-0">
+        <div className="my-20 flex flex-col justify-start gap-12 px-4 md:my-36 md:px-0 2xl:mb-48">
             <Carousel className="w-full max-w-7xl">
                 <CarouselContent>
                     {sponsorsData.map((sponsor, index) => (
@@ -129,4 +129,4 @@ const SponsorCard = () => {
     );
 };
 
-export default SponsorCard;
+export default TestimonialsCarousel;

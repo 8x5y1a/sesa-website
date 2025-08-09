@@ -65,8 +65,21 @@ export default function Benefits() {
     return (
         <div
             id="benefits"
-            className="relative flex min-h-screen flex-col justify-center space-y-5 py-10 md:py-20"
+            className="relative flex min-h-screen flex-col justify-center space-y-5 py-10 md:mb-24 md:py-20"
         >
+            {/* Decorations */}
+            <div className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none">
+                {/* Warm gradient */}
+                <div className="fade-from-left-bg absolute left-0 h-[70rem] w-full bg-[#B1219D] bg-opacity-15 blur-3xl md:w-[80vw]" />
+
+                <Image
+                    src="/decoration/waves.svg"
+                    className="fade-from-center-sponsorship-floor absolute left-1/2 hidden w-11/12 -translate-x-1/2 transform md:bottom-10 md:block md:w-max"
+                    width={1200}
+                    height={280}
+                    alt=""
+                />
+            </div>
             {/* Header + Arrows */}
             <div className="flex flex-col space-y-6 px-6 md:flex-row md:items-start md:justify-between md:space-y-0 md:px-40">
                 <div className="md:w-1/2">
@@ -132,7 +145,7 @@ export default function Benefits() {
                                     alt={card.title}
                                     width={500}
                                     height={300}
-                                    className="h-40 w-full object-cover md:h-48"
+                                    className="h-40 w-full object-cover md:h-48 2xl:h-96"
                                 />
                                 <div className="flex grow flex-col justify-between p-4">
                                     <div>
