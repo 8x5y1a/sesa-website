@@ -47,6 +47,12 @@ export default async function RootLayout({
         <html lang="en">
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${raleway.variable} bg-gradient-to-b from-[#1b1b1b] from-0% via-[#381e4b] via-10% to-[#1b1b1b] font-sans antialiased`}
+                style={{
+                    backgroundImage: `url('/decoration/noise-texture.svg'), linear-gradient(to bottom, #1b1b1b 0%, #381e4b 10%, #1b1b1b 100%)`,
+                    backgroundRepeat: "repeat",
+                    backgroundSize: "cover",
+                    // backgroundPosition: "center",
+                }}
             >
                 <NextIntlClientProvider messages={messages}>
                     <div className="overflow-x-hidden">
