@@ -163,7 +163,7 @@ export default function AboutPage() {
                         heading={tWhatWeDo("social_events_heading")}
                         description={tWhatWeDo("social_events_desc")}
                         linkLabel={tWhatWeDo("social_events_btn")}
-                        linkHref="/events"
+                        linkHref="/EventsPage"
                     />
                     <WhatWeDoCard
                         imageHref="/imgs/about/academic-support.webp"
@@ -178,7 +178,7 @@ export default function AboutPage() {
                         heading={tWhatWeDo("academic_support_heading")}
                         description={tWhatWeDo("academic_support_desc")}
                         linkLabel={tWhatWeDo("academic_support_btn")}
-                        linkHref="/resources"
+                        linkHref="/ResourcesPage"
                     />
                     <WhatWeDoCard
                         imageHref="/imgs/about/professional-development.webp"
@@ -193,7 +193,7 @@ export default function AboutPage() {
                         heading={tWhatWeDo("professional_development_heading")}
                         description={tWhatWeDo("professional_development_desc")}
                         linkLabel={tWhatWeDo("professional_development_btn")}
-                        linkHref="/placeholder"
+                        linkHref="/ContactUsPage"
                     />
                 </div>
                 {/* Introducing our team */}
