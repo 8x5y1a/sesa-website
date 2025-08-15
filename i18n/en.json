@@ -6,11 +6,81 @@
         "purpose": "We connect SEG & EECS students with industry professionals in software engineering, providing resources, networking, and career development.",
         "learn_more": "Learn More",
         "get_involved": "Get Involved",
+
         "events": "Events",
         "events_heading_hl": "Mark your calendar",
         "events_heading": "with our upcoming events",
         "events_subheading": "Register today and save the date. Add our events to your calendar using the built-in embed feature!",
-        "view_all_events": "View All Events"
+        "view_all_events": "View All Events",
+        "event_card_details_btn": "Details",
+
+        "resources_by_students": "Resources by students for students",
+        "resources_heading_h1": "Resources at your",
+        "resources_heading_h1_highlighted": "Fingertips",
+        "resources_subheading": "Our academic team actively organize free resources to support software engineering students in their studies.",
+        "coming_soon_title": "Coming Fall 2025: Your academic toolbox.",
+        "coming_soon_subtitle": "All the resources you need, in one place—launching soon.",
+        "explore_all_resources": "Explore all resources",
+        "join_our_discord": "Join our discord",
+        "thumbs_up_alt": "thumbsUp",
+        "helpfulness_stats": "95% average helpfulness, 1000+ students helped",
+
+        "sponsors_partners": "Our sponsors & partners",
+        "sponsors_heading_h1_highlighted": "Trusted and sponsored",
+        "sponsors_heading_h1": "by the best in the game",
+        "sponsors_subheading": "We're incredibly grateful to our partners who believe in our mission to connect students with industry professionals.",
+        "become_sponsor_btn": "Become a sponsor",
+        "meet_team_btn": "Meet the team",
+        "coming_soon_home_btn": "Back to Home",
+
+        "see_our_story_btn": "See our story",
+
+        "faq_subtitle": "Frequently asked questions",
+        "faq_heading_h1": "Got Questions?",
+        "faq_heading_h1_highlighted": "We've got answers!",
+        "faq_description": "We have A's to your Q's below. If you still have questions, contact us and we'll get back to you as soon as possible.",
+
+        "faq_q1": {
+            "title": "WHAT IS SESA?",
+            "answer": "SESA is the University of Ottawa **Software Engineering Students Association**! We're an informally and independently run student organization with the mission of enriching SEG student life, promoting software engineering as a field, and supporting students academically and professionally as they begin their careers.\n\nOur initiatives are designed to help students succeed both in and out of the classroom. These include:\n\n- **Professional development workshops** and networking events for students\n- **Academic support** through study resources\n- **Social and community-building events** to bring students together\n- **Student outreach** to inspire and engage future engineers\n- **Advocacy** for the SEG student voice within uOttawa"
+        },
+
+        "faq_q2": {
+            "title": "WHO CAN JOIN?",
+            "answer": "**SESA events are open to everyone** — not just software engineering students!\n\nWhether you're a high school student, community member, undergraduate, graduate, or alum, you're welcome to attend (unless stated otherwise).\n\n**To become a SESA team member:**\n- **You must be an enrolled uOttawa student** (undergraduate or graduate, full-time or part-time)\n- You don't have to be in the **software engineering program** — just passionate about the community"
+        },
+
+        "faq_q3": {
+            "title": "WHAT MAKES SESA SPECIAL?",
+            "answer": "**SESA is run by students, for students**, with a focus on community, collaboration, and creating opportunities.\n\nWe're committed to building an **inclusive space** where anyone can get involved, learn, and grow."
+        },
+
+        "faq_q4": {
+            "title": "WHAT EVENTS DOES SESA HOST?",
+            "answer": "SESA hosts tech-related events each year at the University of Ottawa, including technical workshops, career fairs, meet and greets, mock interviews, and product launches.\n\nMany of these activities are in partnership with community organizations, such as [Sponsor page](/en/SponsorsPage) to help organize high quality experiences comparable to the professional workplace."
+        },
+
+        "faq_missed_something": "Did we miss something?",
+        "faq_message_us_btn": "MESSAGE US",
+        "faq_response_time": "We'll get back to you within 48 hours.",
+
+        "connect_subtitle": "Connect with us",
+        "connect_heading_h1_highlighted": "Connect, engage, and grow",
+        "connect_heading_h1": "with us!",
+        "connect_description": "Join our online communities to stay up to date with our latest events, announcements, and resources,",
+
+        "connect_image_alt": "Goal Main Image",
+        "instagram_logo_alt": "Instagram Logo",
+        "discord_logo_alt": "Discord Logo",
+        "linkedin_logo_alt": "LinkedIn Logo",
+        "youtube_logo_alt": "YouTube Logo",
+
+        "team_heading_part1": "The",
+        "team_heading_highlight": "University of Ottawa's",
+        "team_heading_part2": "Software Engineering Students Association",
+        "team_subheading": "Our communications team meticulously crafted the web design, while our development team built it with heart.",
+        "team_become_sponsor_btn": "Become a sponsor",
+        "team_get_in_touch_btn": "Get in touch"
     },
 
     "about": {
