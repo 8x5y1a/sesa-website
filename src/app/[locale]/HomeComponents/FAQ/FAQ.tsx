@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
     Accordion,
@@ -7,14 +6,9 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Link } from "@/i18n/navigation";
-import { useParams } from "next/navigation";
 import Image from "next/image";
 
 const FAQ = () => {
-    // Get the current locale from the dynamic route params
-    const params = useParams();
-    const locale = Array.isArray(params?.locale) ? params.locale[0] : params?.locale || "en";
-
     return (
         <>
             <section className="relative flex flex-col gap-8 px-8 text-white md:px-20 xl:px-32 2xl:px-96">
@@ -240,8 +234,9 @@ const FAQ = () => {
                 <div className="flex items-center justify-center gap-7 text-center font-heading uppercase md:gap-4">
                     <h2 className="w-max text-sm md:text-xl">Did we miss something?</h2>
                     <Button asChild>
-                        <Link href={`/${locale}/ContactUsPage`}>
-                            MESSAGE US <span className="text-gray-50/65">{` >`}</span>
+                        <Link href="ContactUsPage">
+                            MESSAGE US
+                            {/* <span className="ms-2 text-gray-50/65">{` >`}</span> */}
                         </Link>
                     </Button>
                 </div>
