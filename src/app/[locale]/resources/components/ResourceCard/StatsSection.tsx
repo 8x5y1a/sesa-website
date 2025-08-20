@@ -38,13 +38,11 @@ const TooltipPortal = ({
 };
 
 export const StatsSection = ({
-    rating,
     tier,
     format,
     size = "base",
     layout = "horizontal",
 }: {
-    rating: string;
     tier: string;
     format: string;
     size?: "sm" | "base";
@@ -57,7 +55,6 @@ export const StatsSection = ({
     const iconSize = size === "sm" ? 16 : 20;
     const textSize = size === "sm" ? "text-base" : "text-sm";
     const gapSize = layout === "compact" ? "gap-6" : "gap-7";
-    const widthClasses = layout === "compact" ? "" : "w-10";
 
     useEffect(() => {
         if (showTooltip && iconRef.current) {
@@ -71,18 +68,6 @@ export const StatsSection = ({
 
     return (
         <div className={`flex ${gapSize} font-[Monocode] text-thistle`}>
-            {/* Rating */}
-            <div className={`flex items-center gap-1 ${widthClasses}`}>
-                <Image
-                    src="/resources-page/thumbsup.svg"
-                    alt="Thumbs Up"
-                    width={iconSize}
-                    height={iconSize}
-                    className={iconSize === 16 ? "h-4 w-4" : "h-5 w-5"}
-                />
-                <span className={textSize}>{rating}%</span>
-            </div>
-
             {/* Tier with Tooltip */}
             <div className={`relative flex gap-1 ${layout === "horizontal" ? "w-5" : ""}`}>
                 <div

@@ -2,7 +2,7 @@
 
 import React from "react";
 import EventCard from "./EventCard";
-import { Event } from "../utils/types";
+import { Event } from "../../../types/Event";
 
 interface EventsListProps {
     events: Event[];
@@ -12,20 +12,7 @@ const EventsList: React.FC<EventsListProps> = ({ events }) => {
     return (
         <div className="mt-12 flex justify-center space-y-8 md:block">
             {events.map((event, index) => (
-                <EventCard
-                    key={index}
-                    title={event.title}
-                    type={event.type}
-                    date={event.date}
-                    startTime={event.startTime}
-                    endTime={event.endTime}
-                    location={event.location}
-                    description={event.description}
-                    image={event.image}
-                    requiresRegistration={event.requiresRegistration}
-                    instagramLink={event.instagramLink}
-                    registrationLink={event.registrationLink}
-                />
+                <EventCard key={index} event={event} />
             ))}
         </div>
     );
