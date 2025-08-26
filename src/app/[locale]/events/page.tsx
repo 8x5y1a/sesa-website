@@ -3,6 +3,7 @@ import EventSection from "./components/EventSection";
 import InfiniteCarousel from "./components/InfiniteCarousel";
 import TeamUpSection from "./components/TeamUpSection";
 import Image from "next/image";
+import FadeInSection from "@/components/FadeInSection";
 
 import { Metadata } from "next";
 
@@ -63,9 +64,15 @@ const Events = () => {
             </div>
 
             <div className="relative z-10">
-                <EventSection />
-                <TeamUpSection />
-                <ConnectSESA />
+                <FadeInSection>
+                    <EventSection />
+                </FadeInSection>
+                <FadeInSection>
+                    <TeamUpSection />
+                </FadeInSection>
+                <FadeInSection>
+                    <ConnectSESA />
+                </FadeInSection>
 
                 <div className="pointer-events relative mb-52 select-none">
                     {/* Bottom Star Decoration */}
@@ -77,7 +84,9 @@ const Events = () => {
                         alt=""
                     />
 
-                    <InfiniteCarousel />
+                    <FadeInSection>
+                        <InfiniteCarousel />
+                    </FadeInSection>
                 </div>
             </div>
         </div>

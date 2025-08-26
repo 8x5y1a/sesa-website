@@ -5,6 +5,7 @@ import PastCollaboratorsCarousel from "./components/PastCollaboratorsCarousel";
 import TestimonialsCarousel from "./components/TestimonialsCarousel";
 import SponsorsGrid from "./components/SponsorsGrid";
 import PartnerWithUs from "./components/PartnerWithUs";
+import FadeInSection from "@/components/FadeInSection";
 
 import type { Metadata } from "next";
 
@@ -32,23 +33,37 @@ export const metadata: Metadata = {
 const Sponsors = () => {
     return (
         <div className="relative">
-            <SponsorsHeader
-                topText="Sponsor & partners"
-                title="HUGE THANKS TO OUR GENEROUS SPONSORS AND PARTNERS"
-                bottomText="Our incredible partnerships make SESA possible at uOttawa. Thank you for believing in our mission!"
-                btn1="Become a sponsor"
-                btn2="View Benefits"
-            />
+            <FadeInSection>
+                <SponsorsHeader
+                    topText="Sponsor & partners"
+                    title="HUGE THANKS TO OUR GENEROUS SPONSORS AND PARTNERS"
+                    bottomText="Our incredible partnerships make SESA possible at uOttawa. Thank you for believing in our mission!"
+                    btn1="Become a sponsor"
+                    btn2="View Benefits"
+                />
+            </FadeInSection>
             <div className="relative z-20">
-                <SponsorsGrid />
+                <FadeInSection>
+                    <SponsorsGrid />
+                </FadeInSection>
             </div>
             <div className="relative z-10">
-                <CTA />
+                <FadeInSection>
+                    <CTA />
+                </FadeInSection>
             </div>
-            <TestimonialsCarousel />
-            <PastCollaboratorsCarousel />
-            <Benefits />
-            <PartnerWithUs />
+            <FadeInSection>
+                <TestimonialsCarousel />
+            </FadeInSection>
+            <FadeInSection>
+                <PastCollaboratorsCarousel />
+            </FadeInSection>
+            <FadeInSection>
+                <Benefits />
+            </FadeInSection>
+            <FadeInSection>
+                <PartnerWithUs />
+            </FadeInSection>
         </div>
     );
 };

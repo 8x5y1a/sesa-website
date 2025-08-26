@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import FooterSection from "./components/FooterSection";
 import ResourceSection from "./components/ResourceSection";
 import Image from "next/image";
+import FadeInSection from "@/components/FadeInSection";
 
 import type { Metadata } from "next";
 
@@ -46,12 +47,20 @@ const Resources = () => {
 
             {/* Main Content Container */}
             <div className="container relative z-10 mx-auto w-full px-4 py-8 md:max-w-7xl">
-                <Header />
-                <ResourceSection />
+                <FadeInSection>
+                    <Header />
+                </FadeInSection>
+                <FadeInSection>
+                    <ResourceSection />
+                </FadeInSection>
             </div>
 
             {/* Footer Section (CTA and Ange quote) */}
-            <FooterSection />
+            <div className="relative z-10">
+                <FadeInSection>
+                    <FooterSection />
+                </FadeInSection>
+            </div>
         </div>
     );
 };
