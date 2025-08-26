@@ -56,7 +56,6 @@ const ContactForm: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Submit clicked", formData, recaptchaToken);
 
         if (
             !formData.firstName ||
@@ -82,9 +81,6 @@ const ContactForm: React.FC = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ...formData, recaptchaToken }),
             });
-
-            const data = await res.json();
-            console.log("API response:", res.status, data);
 
             if (res.ok) {
                 router.push(`/${locale}/thank_you`);
