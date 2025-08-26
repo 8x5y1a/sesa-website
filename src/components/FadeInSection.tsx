@@ -13,7 +13,7 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children, className = "" 
     });
 
     return (
-        <section ref={ref} className={`fade-in-section${inView ? "in-view" : ""} ${className}`}>
+        <section ref={ref} className={`fade-in-section ${inView ? "in-view" : ""} ${className}`}>
             {children}
         </section>
     );
