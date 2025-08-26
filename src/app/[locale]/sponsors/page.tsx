@@ -5,7 +5,7 @@ import PastCollaboratorsCarousel from "./components/PastCollaboratorsCarousel";
 import TestimonialsCarousel from "./components/TestimonialsCarousel";
 import SponsorsGrid from "./components/SponsorsGrid";
 import PartnerWithUs from "./components/PartnerWithUs";
-import FadeInSection from "@/components/FadeInSection"; // <-- Import
+import FadeInSection from "@/components/FadeInSection";
 
 import type { Metadata } from "next";
 
