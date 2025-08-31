@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
     Select,
@@ -37,6 +38,7 @@ interface SearchFilterBarProps {
     sortOption: string;
     setSortOption: (option: string) => void;
     isMobile: boolean;
+    availableCourses: { label: string; value: string }[];
 }
 
 export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
@@ -51,6 +53,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
     sortOption,
     setSortOption,
     isMobile,
+    availableCourses,
 }) => {
     const t = useTranslations("resources");
 
@@ -71,37 +74,43 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
 
     // Dropdown options for each filter
     const filterDropdownOptions: Record<keyof FilterOptions, { label: string; value: string }[]> = {
-        // TODO: Replace with actual courses from the future database
-        course: [
-            { label: "Select Course", value: "$none" },
-            { label: "ITI1100", value: "ITI1100" },
-            { label: "CS101", value: "CS101" },
-        ],
+        course: availableCourses,
         type: [
-            { label: "Select Type", value: "$none" },
             { label: "Academic", value: "academic" },
             { label: "Career", value: "career" },
             { label: "Technical", value: "technical" },
         ],
         format: [
-            { label: "Select Format", value: "$none" },
             { label: "Video", value: "video" },
-            { label: "PDF", value: "pdf" },
+            { label: "Textbook", value: "textbook" },
             { label: "Website", value: "website" },
+            { label: "Blog", value: "blog" },
+            { label: "Article", value: "article" },
         ],
         language: [
-            { label: "Select Language", value: "$none" },
             { label: "English", value: "english" },
             { label: "French", value: "french" },
+            { label: "Bilingual", value: "bilingual" },
         ],
         tier: [
-            { label: "Select Tier", value: "$none" },
             { label: "Tier S", value: "S" },
             { label: "Tier A", value: "A" },
             { label: "Tier B", value: "B" },
             { label: "Tier C", value: "C" },
         ],
     };
+
+    // Placeholder text for each filter
+    const filterPlaceholders: Record<keyof FilterOptions, string> = {
+        course: "Select Course",
+        type: "Select Type",
+        format: "Select Format",
+        language: "Select Language",
+        tier: "Select Tier",
+    };
+
+    // Check if any filters are active
+    const hasActiveFilters = Object.values(filterOptions).some(value => value !== "");
 
     const changeView = (value: "grid" | "row") => {
         setIsGridMode(value === "grid");
@@ -120,6 +129,16 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
             ...filterOptions,
             // Done because shadcn/ui Selects don't support empty string values
             [key]: value === "$none" ? "" : value,
+        });
+    };
+
+    const clearAllFilters = () => {
+        setFilterOptions({
+            course: "",
+            type: "",
+            format: "",
+            language: "",
+            tier: "",
         });
     };
 
@@ -183,15 +202,25 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                         </Select>
                     )}
 
+                    {/* Clear Filters Button - Only show if filters are active */}
+                    {hasActiveFilters && (
+                        <button
+                            onClick={clearAllFilters}
+                            className="flex items-center gap-2 uppercase text-thistle transition-colors hover:text-white"
+                            title="Clear all filters"
+                        >
+                            Clear Filters
+                            <Trash size={14} />
+                        </button>
+                    )}
+
                     {/* Filter Button */}
                     <div className="relative">
                         <button
                             className="flex items-center gap-2 uppercase text-thistle"
                             onClick={toggleFilterDropdown}
                         >
-                            {Object.values(filterOptions).some(value => value !== "")
-                                ? "Filters Active"
-                                : "Filter"}
+                            {hasActiveFilters ? "Filters Active" : "Filter"}
                             <Image
                                 src="/contact-page/arrows.svg"
                                 alt="Filter Arrow"
@@ -204,10 +233,22 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                         </button>
 
                         {isFilterOpen && (
-                            <div className="absolute right-0 z-50 mt-2 min-w-[18rem]">
+                            <div className="absolute right-0 mt-2 min-w-[18rem]">
                                 <div
                                     className={`${gradientBorderClass} animate-dropdown bg-[rgba(27,27,27,0.3)] p-4 backdrop-blur-md backdrop-saturate-150`}
                                 >
+                                    {/* Clear All Button inside dropdown */}
+                                    {hasActiveFilters && (
+                                        <div className="mb-4 flex justify-end">
+                                            <button
+                                                onClick={clearAllFilters}
+                                                className="text-sm uppercase text-thistle underline transition-colors hover:text-white"
+                                            >
+                                                Clear All
+                                            </button>
+                                        </div>
+                                    )}
+
                                     {(Object.keys(filterOptions) as Array<keyof FilterOptions>).map(
                                         key => (
                                             <div className="mb-4 last:mb-0" key={key}>
@@ -225,9 +266,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                 >
                                                     <SelectTrigger className="w-full">
                                                         <SelectValue
-                                                            placeholder={
-                                                                filterDropdownOptions[key][0].label
-                                                            }
+                                                            placeholder={filterPlaceholders[key]}
                                                         />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -266,10 +305,15 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>Sort</SelectLabel>
-                                    <SelectItem value="alphabetical">Alphabetical</SelectItem>
-                                    <SelectItem value="rating">Ratings</SelectItem>
-                                    <SelectItem value="recent">Recent</SelectItem>
                                     <SelectItem value="relevance">Relevance</SelectItem>
+                                    <SelectItem value="alphabetical">Alphabetical</SelectItem>
+                                    <SelectItem value="tier (worst to best)">
+                                        Tier (worst to best)
+                                    </SelectItem>
+                                    <SelectItem value="tier (best to worst)">
+                                        Tier (best to worst)
+                                    </SelectItem>
+                                    <SelectItem value="last updated">Last Updated</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
