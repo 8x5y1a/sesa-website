@@ -71,37 +71,37 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
     const filterDropdownOptions: Record<keyof FilterOptions, { label: string; value: string }[]> = {
         course: availableCourses,
         category: [
-            { label: "Academic", value: "Academic" },
-            { label: "Career", value: "Career" },
-            { label: "Technical", value: "Technical" },
+            { label: t("filter_academic"), value: "Academic" },
+            { label: t("filter_career"), value: "Career" },
+            { label: t("filter_technical"), value: "Technical" },
         ],
         format: [
-            { label: "Video", value: "video" },
-            { label: "Textbook", value: "textbook" },
-            { label: "Website", value: "website" },
-            { label: "Blog", value: "blog" },
-            { label: "Article", value: "article" },
+            { label: t("filter_video"), value: "video" },
+            { label: t("filter_textbook"), value: "textbook" },
+            { label: t("filter_website"), value: "website" },
+            { label: t("filter_blog"), value: "blog" },
+            { label: t("filter_article"), value: "article" },
         ],
         language: [
-            { label: "English", value: "english" },
-            { label: "French", value: "french" },
-            { label: "Bilingual", value: "bilingual" },
+            { label: t("filter_english"), value: "english" },
+            { label: t("filter_french"), value: "french" },
+            { label: t("filter_bilingual"), value: "bilingual" },
         ],
         tier: [
-            { label: "Tier S", value: "S" },
-            { label: "Tier A", value: "A" },
-            { label: "Tier B", value: "B" },
-            { label: "Tier C", value: "C" },
+            { label: t("filter_tier_s"), value: "S" },
+            { label: t("filter_tier_a"), value: "A" },
+            { label: t("filter_tier_b"), value: "B" },
+            { label: t("filter_tier_c"), value: "C" },
         ],
     };
 
     // Placeholder text for each filter
     const filterPlaceholders: Record<keyof FilterOptions, string> = {
-        course: "Select Course",
-        category: "Select Category",
-        format: "Select Format",
-        language: "Select Language",
-        tier: "Select Tier",
+        course: t("filter_placeholder_course"),
+        category: t("filter_placeholder_category"),
+        format: t("filter_placeholder_format"),
+        language: t("filter_placeholder_language"),
+        tier: t("filter_placeholder_tier"),
     };
 
     // Check if any filters are active
@@ -171,7 +171,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                     width={18}
                                     height={18}
                                 />
-                                View
+                                {t("view_label")}
                                 <Image
                                     src="/contact-page/arrows.svg"
                                     alt="Dropdown Arrow"
@@ -195,7 +195,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                             <SelectContent>
                                                 <SelectGroup>
                                                     <SelectLabel className="text-white">
-                                                        View
+                                                        {t("view_label")}
                                                     </SelectLabel>
                                                     <SelectItem value="grid">
                                                         <span className="flex items-center gap-2">
@@ -205,7 +205,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                                 height={14}
                                                                 alt="Grid"
                                                             />
-                                                            Grid
+                                                            {t("view_grid")}
                                                         </span>
                                                     </SelectItem>
                                                     <SelectItem value="row">
@@ -216,7 +216,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                                 height={14}
                                                                 alt="Rows"
                                                             />
-                                                            Rows
+                                                            {t("view_row")}
                                                         </span>
                                                     </SelectItem>
                                                 </SelectGroup>
@@ -235,13 +235,13 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                 <SelectContent>
                                                     <SelectGroup>
                                                         <SelectLabel className="text-white">
-                                                            Rows
+                                                            {t("view_row")}
                                                         </SelectLabel>
                                                         {[1, 2, 3, 4, 5].map(rows => (
                                                             <SelectItem
                                                                 key={rows}
                                                                 value={rows.toString()}
-                                                            >{`${rows} ${rows === 1 ? "Row" : "Rows"}`}</SelectItem>
+                                                            >{`${rows} ${rows === 1 ? t("view_row") : t("n_rows")}`}</SelectItem>
                                                         ))}
                                                     </SelectGroup>
                                                 </SelectContent>
@@ -260,7 +260,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                             className="flex items-center gap-2 uppercase text-thistle transition-colors hover:text-white"
                             title="Clear all filters"
                         >
-                            Clear Filters
+                            {t("clear_filters")}
                             <Trash size={14} />
                         </button>
                     )}
@@ -279,7 +279,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                 width={18}
                                 height={18}
                             />
-                            {hasActiveFilters ? "Filters Active" : "Filter"}
+                            {hasActiveFilters ? t("filters_active_label") : t("filter_label")}
                             <Image
                                 src="/contact-page/arrows.svg"
                                 alt="Dropdown Arrow"
@@ -300,7 +300,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                 onClick={clearAllFilters}
                                                 className="text-sm uppercase text-thistle underline transition-colors hover:text-white"
                                             >
-                                                Clear All
+                                                {t("clear_all")}
                                             </button>
                                         </div>
                                     )}
@@ -364,7 +364,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                 width={18}
                                 height={18}
                             />
-                            Sort
+                            {t("sort_label")}
                             <Image
                                 src="/contact-page/arrows.svg"
                                 alt="Dropdown Arrow"
@@ -385,20 +385,22 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                         <SelectContent>
                                             <SelectGroup>
                                                 <SelectLabel className="text-white">
-                                                    Sort
+                                                    {t("sort_label")}
                                                 </SelectLabel>
-                                                <SelectItem value="relevance">Relevance</SelectItem>
+                                                <SelectItem value="relevance">
+                                                    {t("sort_item_relevance")}
+                                                </SelectItem>
                                                 <SelectItem value="alphabetical">
-                                                    Alphabetical
+                                                    {t("sort_item_alphabetical")}
                                                 </SelectItem>
                                                 <SelectItem value="tier (worst to best)">
-                                                    Tier (worst to best)
+                                                    {t("sort_tier_worst_best")}
                                                 </SelectItem>
                                                 <SelectItem value="tier (best to worst)">
-                                                    Tier (best to worst)
+                                                    {t("sort_tier_best_worst")}
                                                 </SelectItem>
                                                 <SelectItem value="last updated">
-                                                    Last Updated
+                                                    {t("sort_last_updated")}
                                                 </SelectItem>
                                             </SelectGroup>
                                         </SelectContent>
