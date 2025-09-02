@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { format } from "date-fns";
-import { useTranslations, useLocale } from "next-intl";
-import { Event } from "../../../types/Event";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import type { Event } from "../../../types/Event";
 
 interface EventCardProps {
     event: Event;
@@ -111,6 +111,7 @@ export const EventCard = ({ event }: EventCardProps) => {
                         {truncatedDescription}
                         {description.length > maxDescriptionLength && (
                             <button
+                                type="button"
                                 onClick={toggleDescription}
                                 className="ml-2 text-blueviolet-100 hover:underline focus:outline-none"
                             >
