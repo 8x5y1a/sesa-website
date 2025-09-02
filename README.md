@@ -11,9 +11,10 @@ corepack enable
 corepack prepare pnpm@latest --activate
 ```
 
-Then, start the development server:
+Then, install the dependencies and start the development server:
 
 ```sh
+pnpm install
 pnpm dev
 ```
 
