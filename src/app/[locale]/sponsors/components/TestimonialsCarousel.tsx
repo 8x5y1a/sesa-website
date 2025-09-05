@@ -31,12 +31,7 @@ const sponsorsData = [
         logoAlt: "BiteSite logo",
         testimonial:
             "SESA has always been an amazing organization. I've always been impressed with their work and what they provide to students. In fact, my first two hires at BiteSite were SESA members. Their continued efforts to help out not only students, but the software community in general is admirable and I hope their work grows for years to come.",
-        highlights: [
-            "amazing organization",
-            "impressed with their work",
-            "first two hires at BiteSite were SESA members",
-            "admirable",
-        ],
+        highlights: ["first two hires at BiteSite were SESA members"],
         person: {
             name: "Casey Li",
             title: "CEO at BiteSite",
