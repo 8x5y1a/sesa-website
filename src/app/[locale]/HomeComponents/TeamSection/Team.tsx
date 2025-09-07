@@ -14,10 +14,10 @@ const Team = () => {
     const [hovered, setHovered] = useState<string>("");
 
     return (
-        <section className="relative mb-12 flex flex-col gap-16 md:mb-24 2xl:mb-24 2xl:mt-44">
+        <section className="relative mb-12 flex flex-col gap-16 md:mb-36 2xl:mb-52 2xl:mt-44">
             <div className="pointer-events-none z-0 select-none">
-                <div className="fade-from-center-bg absolute left-1/2 top-[-29rem] h-[112.8rem] w-full -translate-x-1/2 bg-blueviolet-100 bg-opacity-25 blur-xl md:top-[-50rem] md:w-[130rem] 2xl:top-[-53rem]" />
-                <div className="fade-from-center-bg absolute bottom-[-15rem] left-1/2 h-[55rem] w-full -translate-x-1/2 bg-[#B1219D] bg-opacity-30 blur-xl md:w-[80vw]" />
+                <div className="fade-from-center-bg absolute left-1/2 top-[-29rem] h-[112rem] w-full -translate-x-1/2 bg-blueviolet-100 bg-opacity-25 blur-xl md:top-[-59rem] md:w-[130rem] 2xl:top-[-55rem]" />
+                <div className="fade-from-center-bg absolute bottom-[-15rem] 2xl:bottom-[-8rem] left-1/2 h-[55rem] w-full -translate-x-1/2 bg-[#B1219D] bg-opacity-30 blur-xl md:w-[80vw]" />
 
                 <Star
                     variant="star"
@@ -75,23 +75,20 @@ const Team = () => {
                     </span>
                     <span className="block">{t("team_heading_line2")}</span>
                 </h1>
-                <p className="w-full text-center font-sans text-base text-thistle md:text-xl">
+                <p className="w-full md:text-center font-sans text-base text-thistle md:text-xl">
                     {t("team_subheading_line1")}
-                    <br />
+                    <br className="md:block hidden" />
                     {t("team_subheading_line2")}
                 </p>
             </div>
 
-            <div className="z-20 -mt-8 flex justify-center gap-4 px-8 text-center font-heading md:-mt-10">
+            <div className="z-20 -mt-8 flex flex-col md:flex-row md:justify-center items-center gap-4 px-8 md:-mt-10 sm:flex-row">
                 <Button className="w-full font-heading uppercase sm:w-max" asChild>
-                    <Link href="/sponsors">
-                        {t("team_become_sponsor_btn")}{" "}
-                        <span className="text-gray ml-2 opacity-50">{">"}</span>
-                    </Link>
+                    <Link href="/sponsors">{t("team_become_sponsor_btn")}</Link>
                 </Button>
 
                 <Button
-                    className="w-full font-heading text-sm uppercase sm:w-max md:text-lg xl:text-xl"
+                    className="w-full font-heading uppercase sm:w-max "
                     variant="outline"
                     asChild
                 >
@@ -118,7 +115,7 @@ const Team = () => {
                 </Marquee>
 
                 {hovered && (
-                    <div className="absolute left-1/2 top-14 z-10 mt-7 -translate-x-1/2 px-4 py-2 text-center">
+                    <div className="absolute left-1/2 top-16 2xl:top-20 z-10 mt-7 -translate-x-1/2 px-4 py-2 text-center">
                         <h1 className="mb-2 font-heading text-xl">{hovered}</h1>
                         <p className="font-sans text-thistle">
                             {membersData.find(m => m.name === hovered)?.role}
