@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
 
 const Header = () => {
     const t = useTranslations("events");
@@ -17,6 +16,7 @@ const Header = () => {
                     {t("stay_up_to_date_blurb")}
                 </p>
 
+                {/*
                 <Button
                     className="font-heading uppercase md:mx-8"
                     onClick={() => {
@@ -30,6 +30,7 @@ const Header = () => {
                     <p>{t("subscribe_info_line1")}</p>
                     <p>{t("subscribe_info_line2")}</p>
                 </div>
+                */}
             </div>
         </div>
     );

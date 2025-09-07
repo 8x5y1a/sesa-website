@@ -175,6 +175,21 @@
         "topic_support": "Support"
     },
     "events": {
+        "event_type": {
+            "all": "All",
+            "workshop": "Workshop",
+            "social": "Social Event",
+            "networking": "Networking Event",
+            "academic": "Academic Support"
+        },
+
+        "query_state": {
+            "pending": "Loading events...",
+            "no_results": "No events right now. Check back soon!",
+            "error": "Failed to load events.",
+            "error_details": "Error details"
+        },
+
         "no_events": "No events found",
         "connect_with_sesa": "Connect with SESA",
         "stay_updated": "Stay updated",
@@ -198,11 +213,6 @@
         "btn_view_post": "View Post",
 
         "filter_type_placeholder": "Type",
-        "filter_all": "All",
-        "filter_workshop": "Workshop",
-        "filter_networking": "Networking Event",
-        "filter_social": "Social Event",
-        "filter_academic": "Academic Support",
 
         "time_filter_all": "All",
         "time_filter_past": "Past",

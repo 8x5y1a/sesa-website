@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import type { Event } from "../../../types/Event";
+import type { Event } from "@/schemas/events";
 
 interface EventCardProps {
     event: Event;
@@ -14,6 +14,7 @@ interface EventCardProps {
 
 export const EventCard = ({ event }: EventCardProps) => {
     const t = useTranslations("events");
+    const tType = useTranslations("events.event_type");
     const locale = useLocale();
     const lang = locale === "fr" ? "fr" : "en";
 
@@ -22,14 +23,14 @@ export const EventCard = ({ event }: EventCardProps) => {
 
     // Extract localized content
     const title = event.title[lang];
-    const type = event.type[lang];
+    const type = tType(event.type);
     const description = event.description[lang];
 
-    const isPastEvent = event.date < new Date();
+    const isPastEvent = event.startTime < new Date();
 
-    const formattedDate = format(event.date, "MMM dd, yyyy");
-    const day = format(event.date, "dd");
-    const dayOfWeek = format(event.date, "EEE").toUpperCase();
+    const formattedDate = format(event.startTime, "MMM dd, yyyy");
+    const day = format(event.startTime, "dd");
+    const dayOfWeek = format(event.startTime, "EEE").toUpperCase();
     const timeRange = `${format(event.startTime, "ha")} - ${format(event.endTime, "ha")}`;
 
     // Handle registration
@@ -71,7 +72,7 @@ export const EventCard = ({ event }: EventCardProps) => {
                 <div>
                     <Image
                         src={event.image}
-                        alt={title}
+                        alt={event.imageAlt[lang]}
                         width={350}
                         height={350}
                         className="aspect-square h-full max-w-none object-cover"
@@ -141,7 +142,7 @@ export const EventCard = ({ event }: EventCardProps) => {
                         </Button>
 
                         {/* Register Button (only for events that require registration) */}
-                        {event.requiresRegistration && !isRegistered && !isPastEvent && (
+                        {event.registrationLink && !isRegistered && !isPastEvent && (
                             <Button
                                 className="flex items-center gap-2 font-heading uppercase"
                                 onClick={handleRegister}
