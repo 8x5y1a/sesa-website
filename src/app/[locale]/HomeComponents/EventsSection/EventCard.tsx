@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { CalendarDays, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import type { Event } from "@/app/types/Event";
@@ -36,13 +37,24 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
                     </div>
 
                     {/* Date & Time */}
-                    <div className="flex flex-col">
-                        <span className="text-base font-medium text-thistle">
-                            {formattedDate}, {timeRange}
-                        </span>
-                        <span className="text-left font-mono text-base text-thistle">
-                            {event.location}
-                        </span>
+                    <div className="flex flex-col gap-1 font-mono text-thistle">
+                        {/* Date with Calendar Icon */}
+                        <div className="flex items-center gap-2">
+                            <CalendarDays className="h-4 w-4" />
+                            <span className="text-base font-medium">{formattedDate}</span>
+                        </div>
+
+                        {/* Time with Clock Icon */}
+                        <div className="flex items-center gap-2">
+                            <Clock className="h-4 w-4" />
+                            <span className="text-base font-medium">{timeRange}</span>
+                        </div>
+
+                        {/* Location with Map Pin Icon */}
+                        <div className="flex items-center gap-2">
+                            <MapPin className="h-4 w-4" />
+                            <span className="text-left text-base">{event.location}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -51,7 +63,7 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
 
                 {/* Description */}
                 <div>
-                    <p className={`truncate-multiline font-sans text-base text-gray-400`}>
+                    <p className={`truncate-multiline font-sans text-base text-thistle`}>
                         {event.description[lang]}
                     </p>
                 </div>
