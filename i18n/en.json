@@ -198,7 +198,7 @@
         "our_events": "Our events",
         "stay_up_to_date_hl": "Stay",
         "stay_up_to_date": "up to date",
-        "stay_up_to_date_blurb": "Add our calendar to yours to stay informed about all our activities, or select specific events you’d like to add.",
+        "stay_up_to_date_blurb": "Add our events to your calendar to never miss a moment.",
         "btn_subscribe": "+ Sync Calendar",
         "subscribe_info_line1": "Syncs with Apple, Outlook, Yahoo, or Google.",
         "subscribe_info_line2": "Unsubscribe at any time.",
@@ -217,7 +217,9 @@
         "time_filter_all": "All",
         "time_filter_past": "Past",
         "time_filter_today": "Today",
-        "time_filter_upcoming": "Upcoming"
+        "time_filter_upcoming": "Upcoming",
+
+        "calendar_export": "The event information has been downloaded in iCalendar (.ics) format.\nThis file can be imported into your preferred calendar to add the event.\n\nSee:\n\n- [Google Calendar](https://support.google.com/calendar/answer/37118)\n- [Outlook](https://support.microsoft.com/en-us/office/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web-cff1429c-5af6-41ec-a5b4-74f2c278e98c)\n"
     },
     "resources": {
         "resources_heading": "Resources",
