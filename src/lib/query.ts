@@ -1,5 +1,6 @@
-import { QueryClient, useQuery } from "@tanstack/react-query";
+import { defaultShouldDehydrateQuery, QueryClient } from "@tanstack/react-query";
 import { collection, getDocs } from "firebase/firestore";
+import SuperJSON from "superjson";
 import { db } from "@/lib/firebase";
 import { FirestoreEvent } from "@/schemas/events";
 import { FirestoreResource } from "@/schemas/resources";
@@ -15,11 +16,20 @@ export const createQueryClient = () =>
                 // above 0 to avoid refetching immediately on the client
                 staleTime: 30 * 1000,
             },
+            dehydrate: {
+                serializeData: SuperJSON.serialize,
+                shouldDehydrateQuery: query =>
+                    defaultShouldDehydrateQuery(query) || query.state.status === "pending",
+            },
+            hydrate: {
+                deserializeData: SuperJSON.deserialize,
+            },
         },
     });
 
 /**
- * Query function used for {@link useEvents}.
+ * Function used to fetch all of the remote events from Firestore.
+ * You probably don't want to call this directly; use tRPC for requests from the frontend.
  */
 export const fetchEvents = async () => {
     // Fetch from Firestore
@@ -36,17 +46,8 @@ export const fetchEvents = async () => {
 };
 
 /**
- * Get events data from Firestore.
- * Remote data is validated with Zod before returning.
- */
-export const useEvents = () =>
-    useQuery({
-        queryKey: ["events"],
-        queryFn: fetchEvents,
-    });
-
-/**
- * Query function used for {@link useResources}.
+ * Function used to fetch all of the remote resources from Firestore.
+ * You probably don't want to call this directly; use tRPC for requests from the frontend.
  */
 export const fetchResources = async () => {
     // Fetch from Firestore
@@ -61,13 +62,3 @@ export const fetchResources = async () => {
         .map(doc => doc.data);
     return validated;
 };
-
-/**
- * Get resources data from Firestore.
- * Remote data is validated with Zod before returning.
- */
-export const useResources = () =>
-    useQuery({
-        queryKey: ["resources"],
-        queryFn: fetchResources,
-    });
