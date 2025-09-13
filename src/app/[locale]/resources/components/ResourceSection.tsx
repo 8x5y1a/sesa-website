@@ -164,16 +164,16 @@ const ResourceSection = () => {
                             </h1>
                         </div>
                     )}
-
-                    {/* Pagination */}
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange={setCurrentPage}
-                        isMobile={isMobile}
-                    />
                 </>
             )}
+
+            {/* Pagination */}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+                isMobile={isMobile}
+            />
         </>
     );
 };
