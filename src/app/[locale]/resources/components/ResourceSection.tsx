@@ -1,6 +1,12 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { parseAsInteger, useQueryState } from "nuqs";
+import {
+    createParser,
+    parseAsString,
+    parseAsStringLiteral,
+    useQueryState,
+    useQueryStates,
+} from "nuqs";
 import { useEffect, useMemo, useState } from "react";
 import Pagination from "@/components/Pagination";
 import { useDebounce } from "@/hooks";
@@ -9,18 +15,60 @@ import ResourceList from "./ResourceList";
 import SearchFilterBar from "./SearchFilterBar";
 import type { ResourceFilters, ResourceSorts } from "@/server/api/routers/resource";
 
+const TIER_MAP = ["S", "A", "B", "C", "D", "E", "F"] as const;
+const REVERSE_TIER_MAP = {
+    S: 0,
+    A: 1,
+    B: 2,
+    C: 3,
+    D: 4,
+    E: 5,
+    F: 6,
+} as const;
+
+const parseAsTier = createParser<0 | 1 | 2 | 3 | 4 | 5 | 6>({
+    parse(value) {
+        if (value in REVERSE_TIER_MAP)
+            return REVERSE_TIER_MAP[value as keyof typeof REVERSE_TIER_MAP];
+        return null;
+    },
+
+    serialize(value) {
+        return TIER_MAP[value];
+    },
+});
+
 const ResourceSection = () => {
-    // URL-based state
-    const [currentPage, setCurrentPage] = useQueryState("page", parseAsInteger.withDefault(1));
+    const [currentPage, setCurrentPage] = useState(1);
 
     const t = useTranslations("resources");
 
     const [rowsToShow, setRowsToShow] = useState(2);
     const [isGridMode, setIsGridMode] = useState(true);
-    const [searchTerm, setSearchTerm] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useQueryState("search");
     const debouncedSearchTerm = useDebounce(searchTerm || null, 300);
-    const [filterOptions, setFilterOptions] = useState<ResourceFilters>({});
-    const [sortOption, setSortOption] = useState<ResourceSorts>("created_desc");
+
+    const [filterOptions, setFilterOptions] = useQueryStates({
+        course: parseAsString,
+        category: parseAsString,
+        format: parseAsString,
+        locale: parseAsStringLiteral(["en", "fr"] as const),
+        tier: parseAsTier,
+    }) satisfies [ResourceFilters, unknown];
+
+    const [sortOption, setSortOption] = useQueryState<ResourceSorts>(
+        "sort",
+        parseAsStringLiteral([
+            "created_asc",
+            "created_desc",
+            "updated_asc",
+            "updated_desc",
+            "tier_asc",
+            "tier_desc",
+            "alphabetical_asc",
+            "alphabetical_desc",
+        ]).withDefault("created_desc"),
+    );
     const [isMobile, setIsMobile] = useState(false);
 
     const itemsPerRow = isGridMode ? (isMobile ? 1 : 3) : 1;
@@ -84,7 +132,7 @@ const ResourceSection = () => {
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
                 filterOptions={filterOptions}
-                setFilterOptions={setFilterOptions}
+                setFilterOptions={setFilterOptions as (options: ResourceFilters) => void}
                 sortOption={sortOption}
                 setSortOption={setSortOption}
                 isMobile={isMobile}

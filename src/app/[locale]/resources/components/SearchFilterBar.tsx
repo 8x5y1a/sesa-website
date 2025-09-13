@@ -123,7 +123,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
         [t],
     );
 
-    const hasActiveFilters = Object.values(filterOptions).some(value => value !== "");
+    const hasActiveFilters = Object.values(filterOptions).some(value => value != null);
 
     const changeView = (value: "grid" | "row") => {
         setIsGridMode(value === "grid");
@@ -139,13 +139,18 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
         let realValue: string | number = value;
         if (key === "tier") realValue = parseInt(value, 10);
         setFilterOptions({
-            ...filterOptions,
             [key]: realValue === "$none" ? undefined : realValue,
         });
     };
 
     const clearAllFilters = () => {
-        setFilterOptions({});
+        // Explicitly set all active filters to null
+        setFilterOptions(
+            Object.keys(filterOptions).reduce((acc, key) => {
+                acc[key as keyof ResourceFilters] = null;
+                return acc;
+            }, {} as ResourceFilters),
+        );
     };
 
     return (
