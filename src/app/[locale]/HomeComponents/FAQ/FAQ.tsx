@@ -19,6 +19,7 @@ const FAQ = () => {
     // Only create DOMPurify when in browser
     const DOMPurify = useMemo(() => {
         if (typeof window !== "undefined") {
+            // @ts-expect-error stupid
             return createDOMPurify(window);
         }
         return null;

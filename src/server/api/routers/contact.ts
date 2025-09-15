@@ -5,6 +5,7 @@ import nodemailer from "nodemailer";
 import * as z from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
+// @ts-expect-error stupid
 const purify = DOMPurify(new JSDOM("<!DOCTYPE html>").window);
 const transformPurify = (text: string) => purify.sanitize(text, { ALLOWED_TAGS: [] });
 

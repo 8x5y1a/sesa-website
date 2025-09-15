@@ -62,6 +62,7 @@ export default async function ResourcePage({ params }: { params: Promise<{ id: s
     // 404 if the resource does not exist
     if (!resource) notFound();
 
+    // @ts-expect-error stupid
     const resourceBody = DOMPurify(new JSDOM("<!DOCTYPE html>").window).sanitize(
         await marked(resource.body),
     );
