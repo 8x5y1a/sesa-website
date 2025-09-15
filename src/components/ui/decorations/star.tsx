@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 type StarVariant = "star" | "star-faded";
@@ -23,7 +22,6 @@ const STAR_CONFIG: Record<StarVariant, { src: string; width: number; height: num
 const Star = ({
     variant,
     className = "",
-    delay = 0,
     width,
     height,
     rotate = 0,
@@ -33,7 +31,7 @@ const Star = ({
 
     return (
         <div
-            className={`pointer-events-none absolute transform-gpu select-none will-change-transform ${
+            className={`pointer-events-none absolute select-none ${
                 showMobile ? "block" : "hidden md:block"
             } ${className}`}
             style={{
@@ -41,29 +39,14 @@ const Star = ({
                 transform: `rotate(${rotate}deg)`,
             }}
         >
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{
-                    opacity: [0.6, 1, 0.6],
-                    scale: [0.95, 1.05, 0.95],
-                }}
-                transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay,
-                    ease: "easeInOut",
-                    type: "tween",
-                }}
-            >
-                <Image
-                    src={src}
-                    width={width ?? defaultWidth}
-                    height={height ?? defaultHeight}
-                    alt=""
-                    className="block drop-shadow-[0_0_6px_rgba(255,255,255,0.25)]"
-                    style={{ maxWidth: "none", display: "block" }}
-                />
-            </motion.div>
+            <Image
+                src={src}
+                width={width ?? defaultWidth}
+                height={height ?? defaultHeight}
+                alt=""
+                className="block drop-shadow-[0_0_6px_rgba(255,255,255,0.25)]"
+                style={{ maxWidth: "none", display: "block" }}
+            />
         </div>
     );
 };
