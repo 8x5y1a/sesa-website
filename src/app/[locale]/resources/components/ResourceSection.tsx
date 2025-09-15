@@ -8,7 +8,6 @@ import {
     useQueryStates,
 } from "nuqs";
 import { useEffect, useMemo, useState } from "react";
-import Pagination from "@/components/Pagination";
 import { useDebounce } from "@/hooks";
 import { api } from "@/trpc/react";
 import ResourceList from "./ResourceList";
@@ -39,11 +38,8 @@ const parseAsTier = createParser<0 | 1 | 2 | 3 | 4 | 5 | 6>({
 });
 
 const ResourceSection = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-
     const t = useTranslations("resources");
 
-    const [rowsToShow, setRowsToShow] = useState(2);
     const [isGridMode, setIsGridMode] = useState(true);
     const [searchTerm, setSearchTerm] = useQueryState("search");
     const debouncedSearchTerm = useDebounce(searchTerm || null, 300);
@@ -71,45 +67,26 @@ const ResourceSection = () => {
     );
     const [isMobile, setIsMobile] = useState(false);
 
-    const itemsPerRow = isGridMode ? (isMobile ? 1 : 3) : 1;
-    const itemsPerPage = itemsPerRow * rowsToShow;
-
-    const getPageBase = useMemo(
-        () => ({
-            pageSize: itemsPerPage,
-            search: debouncedSearchTerm,
-            filters: filterOptions,
-            sort: sortOption,
-        }),
-        [itemsPerPage, debouncedSearchTerm, filterOptions, sortOption],
-    );
-
-    const {
-        isPending,
-        error,
-        data: resources,
-    } = api.resource.getPage.useQuery({
-        ...getPageBase,
-        page: currentPage,
-    });
+    const { isPending, isFetching, hasNextPage, error, data, fetchNextPage } =
+        api.resource.getCursorPage.useInfiniteQuery(
+            {
+                search: debouncedSearchTerm,
+                filters: filterOptions,
+                sort: sortOption,
+            },
+            {
+                getPreviousPageParam: lastPage => lastPage.prevCursor,
+                getNextPageParam: lastPage => lastPage.nextCursor,
+            },
+        );
+    const resources = useMemo(() => {
+        if (!data) return [];
+        return data.pages.flatMap(page => page.data);
+    }, [data]);
 
     const { data: availableCoursesData } = api.resource.getUniqueCourses.useQuery();
-    const { data: countData } = api.resource.getCount.useQuery({
-        search: debouncedSearchTerm,
-        filters: filterOptions,
-    });
-
-    const utils = api.useUtils();
 
     const availableCourses = availableCoursesData ?? [];
-    const count = countData ?? 0;
-    const totalPages = Math.ceil(count / (itemsPerRow * rowsToShow));
-
-    // Prefetch next page, if it exists
-    useEffect(() => {
-        if (currentPage < totalPages)
-            utils.resource.getPage.prefetch({ ...getPageBase, page: currentPage + 1 });
-    }, [currentPage, totalPages, getPageBase, utils]);
 
     // Detect mobile
     useEffect(() => {
@@ -127,8 +104,6 @@ const ResourceSection = () => {
             <SearchFilterBar
                 isGridMode={isGridMode}
                 setIsGridMode={setIsGridMode}
-                rowsToShow={rowsToShow}
-                setRowsToShow={setRowsToShow}
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
                 filterOptions={filterOptions}
@@ -156,7 +131,13 @@ const ResourceSection = () => {
                 <>
                     {/* Resources Grid or Row */}
                     {resources.length > 0 ? (
-                        <ResourceList currentResources={resources} isGridMode={isGridMode} />
+                        <ResourceList
+                            currentResources={resources}
+                            isGridMode={isGridMode}
+                            isFetching={isFetching}
+                            hasNextPage={hasNextPage}
+                            fetchNextPage={fetchNextPage}
+                        />
                     ) : (
                         <div className="flex justify-center items-center h-16">
                             <h1 className="font-heading text-xl text-white font-bold">
@@ -166,14 +147,6 @@ const ResourceSection = () => {
                     )}
                 </>
             )}
-
-            {/* Pagination */}
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-                isMobile={isMobile}
-            />
         </>
     );
 };

@@ -41,11 +41,15 @@ export default async function Resources() {
     if (locale !== "en" && locale !== "fr")
         return NextResponse.json({ message: "Invalid locale" }, { status: 400 });
 
-    void api.resource.getPage.prefetch({
-        page: 1,
-        pageSize: 6,
+    void api.resource.getCursorPage.prefetchInfinite({
         search: null,
-        filters: {},
+        filters: {
+            course: null,
+            category: null,
+            format: null,
+            locale: null,
+            tier: null,
+        },
         sort: "created_desc",
     });
 
