@@ -11,7 +11,6 @@ import Hero from "./HomeComponents/Hero";
 import Quotes from "./HomeComponents/QuotesSection/Quotes";
 import Resources from "./HomeComponents/ResourcesSection/Resources";
 import Sponsors from "./HomeComponents/SponsorSection/Sponsors";
-import Team from "./HomeComponents/TeamSection/Team";
 import type { Metadata } from "next";
 export const generateStaticParams = localeParams;
 
@@ -76,9 +75,11 @@ export default async function Home() {
                 <FadeInSection>
                     <Connect />
                 </FadeInSection>
+                {/*
                 <FadeInSection>
                     <Team />
                 </FadeInSection>
+                */}
             </div>
         </HydrateClient>
     );
