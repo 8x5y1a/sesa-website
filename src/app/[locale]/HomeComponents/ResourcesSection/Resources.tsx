@@ -67,7 +67,7 @@ const Resources = () => {
                 />
 
                 {/* Light gradient */}
-                <div className="fade-from-right-bg absolute right-0 top-[20rem] h-[100rem] w-[30vw] bg-blueviolet-100 bg-opacity-20 blur-sm" />
+                <div className="fade-from-right-bg absolute right-0 top-[20rem] h-[100rem] w-[30vw] bg-blueviolet-100/20 blur-xs" />
 
                 <Image
                     src="/decoration/waves.svg"
