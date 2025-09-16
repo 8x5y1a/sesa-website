@@ -80,6 +80,7 @@ export default async function RootLayout({
 
     return (
         <html lang={locale}>
+            <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js" />
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${raleway.variable} bg-linear-to-b from-0% from-gray-100 via-10% via-[#381e4b] to-gray-100 font-sans antialiased`}
                 style={{
