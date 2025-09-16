@@ -13,26 +13,34 @@ const Sponsors = () => {
             {/* Decorations */}
             <div className="pointer-events-none z-0 select-none">
                 {/* Light gradient */}
-                <div className="fade-from-center-bg absolute left-1/2 top-1/2 h-[120rem] w-full -translate-x-1/2 -translate-y-1/2 bg-blueviolet-100/35 blur-xl md:w-[90vw]" />
+                <div className="fade-from-center-bg -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 h-[120rem] w-full bg-blueviolet-100/35 blur-xl md:w-[90vw]" />
 
                 <Image
-                    src="/decoration/large-wavy-grid.svg"
-                    className="fade-from-top-bottom-bg absolute left-1/2 top-[8rem] h-[850px] -translate-x-1/2 transform object-cover md:top-[19rem]"
-                    width={1000}
-                    height={1870}
+                    src="/decoration/sponsorships-floor-grid.svg"
+                    className="fade-from-center-sponsorship-floor -translate-x-1/2 absolute left-1/2 z-0 hidden transform opacity-60 md:top-44 md:block"
+                    width={1200}
+                    height={1000}
+                    alt=""
+                />
+
+                <Image
+                    src="/decoration/floor-grid.svg"
+                    className="fade-from-center-bg md:-bottom-18 -translate-x-1/2 absolute bottom-10 left-1/2 h-[235px] transform object-cover object-bottom"
+                    width={1200}
+                    height={430}
                     alt=""
                 />
 
                 <Star
                     variant="star"
-                    className="hidden md:left-[5rem] md:top-[3rem] md:block"
+                    className="hidden md:top-[3rem] md:left-[5rem] md:block"
                     rotate={-110}
                     delay={1}
                 />
 
                 <Star
                     variant="star-faded"
-                    className="hidden md:left-[10rem] md:top-[7rem] md:block"
+                    className="hidden md:top-[7rem] md:left-[10rem] md:block"
                     rotate={30}
                     width={63}
                     height={63}
@@ -41,13 +49,13 @@ const Sponsors = () => {
 
                 <Star
                     variant="star"
-                    className="right-[14rem] hidden md:right-[10rem] md:top-[14rem] md:block"
+                    className="right-[14rem] hidden md:top-[14rem] md:right-[10rem] md:block"
                     delay={1}
                 />
 
                 <Star
                     variant="star-faded"
-                    className="right-[2rem] top-[8rem] md:right-[14rem] md:top-[13rem]"
+                    className="top-[8rem] right-[2rem] md:top-[13rem] md:right-[14rem]"
                     rotate={30}
                     width={60}
                     height={60}
@@ -59,10 +67,10 @@ const Sponsors = () => {
                 <div className="flex w-full justify-center px-6">
                     {/* Content Container */}
                     <div className="relative z-10 text-center">
-                        <p className="relative inline-block bg-clip-text! font-mono text-xs text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background:linear-gradient(55.37deg,#8824dc,#b1219d)] md:text-base">
+                        <p className="relative inline-block bg-clip-text! font-mono text-transparent text-xs [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] [background:linear-gradient(55.37deg,#8824dc,#b1219d)] md:text-base">
                             {t("sponsors_partners")}
                         </p>
-                        <h1 className="mx-auto mt-2 max-w-[30ch] font-heading text-2xl uppercase leading-tight text-white md:text-4xl">
+                        <h1 className="mx-auto mt-2 max-w-[30ch] font-heading text-2xl text-white uppercase leading-tight md:text-4xl">
                             <span className="relative inline-block">
                                 <span className="highlight-text">
                                     {t("sponsors_heading_h1_highlighted")}
