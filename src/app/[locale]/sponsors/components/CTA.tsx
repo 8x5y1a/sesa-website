@@ -47,7 +47,7 @@ export default function CTA() {
                 </Button>
             </div>
 
-            <p className="mt-4 font-sans text-xs tracking-widest text-thistle md:text-sm">
+            <p className="mt-4 font-sans text-xs tracking-widest text-thistle md:text-sm z-100">
                 {t("cta_disclaimer")}
             </p>
         </div>
