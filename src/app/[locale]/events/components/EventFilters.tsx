@@ -39,26 +39,22 @@ const EventFilters: React.FC<{
     };
 
     return (
-        <div className="mx-4 -mb-6 mt-8 flex items-center justify-between">
-            {/* Left Side: Time Filters */}
-            <div className="flex flex-wrap gap-4">
-                {timeFilters.map(filter => (
-                    <Button
-                        key={filter}
-                        variant="outline"
-                        className={`font-heading uppercase text-white backdrop-blur-lg ${
-                            activeTimeFilter === filter ? "fill-gradient" : ""
-                        }`}
-                        onClick={() => handleTimeFilterClick(filter)}
-                    >
-                        {t(`time_filter_${filter}`)}
-                    </Button>
-                ))}
-            </div>
+        <div className="md:px-20 px-8 mt-8 lg:mt-16 mb-4 flex md:gap-4 gap-1 flex-wrap items-center justify-between">
+            {timeFilters.map(filter => (
+                <Button
+                    key={filter}
+                    variant="outline"
+                    className={`cursor-pointer flex-grow xl:flex-grow-0 text-base p-2 md:px-8 font-heading uppercase text-white backdrop-blur-lg ${
+                        activeTimeFilter === filter ? "fill-gradient" : ""
+                    }`}
+                    onClick={() => handleTimeFilterClick(filter)}
+                >
+                    {t(`time_filter_${filter}`)}
+                </Button>
+            ))}
 
-            {/* Right Side: Event Type Dropdown */}
             <Select onValueChange={value => handleEventFilterChange(value as EventType)}>
-                <SelectTrigger className="bg-transparent! cursor-pointer border-none! px-5 py-4 uppercase text-white transition-colors data-placeholder:text-white">
+                <SelectTrigger className="md:ml-auto bg-transparent! cursor-pointer border-none! px-0 md:px-6 uppercase text-white transition-colors data-placeholder:text-white">
                     <SelectValue placeholder={t("filter_type_placeholder")} />
                 </SelectTrigger>
                 <SelectContent>

@@ -88,8 +88,8 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange
     if (totalPages <= 1) return null;
 
     return (
-        <ShadcnPagination className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-4 md:mt-8 -ml-6">
-            <PaginationContent>
+        <ShadcnPagination className="overflow-y-scroll md:mt-8">
+            <PaginationContent className="flex justify-center w-full">
                 {/* Prev */}
                 <PaginationItem>
                     <PaginationPrevious
@@ -99,7 +99,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange
                             handlePrev();
                         }}
                         aria-disabled={currentPage === 1}
-                        className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+                        className={`px-0 ml-12 md:px-6 ${currentPage === 1 ? "pointer-events-none opacity-50" : ""}`}
                     />
                 </PaginationItem>
 
@@ -173,9 +173,9 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange
                             }
                         }}
                         aria-disabled={currentPage === totalPages}
-                        className={
+                        className={`px-0 md:px-6 ${
                             currentPage === totalPages ? "pointer-events-none opacity-50" : ""
-                        }
+                        }`}
                     />
                 </PaginationItem>
             </PaginationContent>
