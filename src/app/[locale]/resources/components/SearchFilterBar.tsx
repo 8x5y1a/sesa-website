@@ -1,7 +1,8 @@
 import { Trash } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { MultiSelect, type MultiSelectRef } from "@/components/ui/multi-select";
 import {
     Select,
     SelectContent,
@@ -49,6 +50,8 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
         null,
     );
 
+    const accessibilityMultiSelectRef = useRef<MultiSelectRef>(null);
+
     const availableCoursesMapped = useMemo(
         () => availableCourses.map(course => ({ label: course, value: course })),
         [availableCourses],
@@ -56,7 +59,11 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
 
     const filterDropdownOptions: Record<
         keyof ResourceFilters,
-        Array<{ label: string; value: string | number }>
+        Array<{
+            label: string;
+            value: string | number;
+            style?: { badgeColor?: string; iconColor?: string; gradient?: string };
+        }>
     > = {
         course: availableCoursesMapped,
         category: [
@@ -80,6 +87,20 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
             { label: t("filter_tier_a"), value: 1 },
             { label: t("filter_tier_b"), value: 2 },
             { label: t("filter_tier_c"), value: 3 },
+        ],
+        accessibility: [
+            {
+                label: t("filter_accessibility_cc"),
+                value: "closed captions [cc]",
+                style: {
+                    badgeColor: "#6B21A8", // Purple
+                },
+            },
+            {
+                label: t("filter_accessibility_screenreader"),
+                value: "screen reader compatible",
+                style: { badgeColor: "#e01f58" },
+            },
         ],
     };
 
@@ -107,6 +128,7 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                 format: t("filter_placeholder_format"),
                 locale: t("filter_placeholder_language"),
                 tier: t("filter_placeholder_tier"),
+                accessibility: t("filter_placeholder_accessibility"),
             }) as const satisfies Record<keyof ResourceFilters, string>,
         [t],
     );
@@ -139,6 +161,9 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                 return acc;
             }, {} as ResourceFilters),
         );
+
+        // Clear the MultiSelect component
+        accessibilityMultiSelectRef.current?.clear();
     };
 
     return (
@@ -263,18 +288,14 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                 />
                             </button>
                             {openDropdown === "filter" && (
-                                <div className="absolute right-0 z-30 mt-2 min-w-[18rem]">
+                                <div className="absolute right-0 z-30 mt-2 min-w-[22rem]">
                                     <div
                                         className={`${gradientBorderClass} animate-dropdown bg-[rgba(27,27,27,0.3)] p-4 backdrop-blur-3xl backdrop-saturate-150`}
                                     >
                                         {(
-                                            [
-                                                "course",
-                                                "category",
-                                                "format",
-                                                "locale",
-                                                "tier",
-                                            ] as Array<keyof ResourceFilters>
+                                            Object.keys(filterDropdownOptions) as Array<
+                                                keyof ResourceFilters
+                                            >
                                         ).map(key => (
                                             <div className="mb-4 last:mb-0" key={key}>
                                                 <label
@@ -283,33 +304,69 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                                 >
                                                     {filterPlaceholders[key]}
                                                 </label>
-                                                <Select
-                                                    value={filterOptions[key]?.toString()}
-                                                    onValueChange={value =>
-                                                        handleFilterChange(key, value)
-                                                    }
-                                                >
-                                                    <SelectTrigger className="bg-transparent! cursor-pointer w-full text-white">
-                                                        <SelectValue
-                                                            placeholder={filterPlaceholders[key]}
-                                                        />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        <SelectGroup>
-                                                            {filterDropdownOptions[key].map(
-                                                                option => (
-                                                                    <SelectItem
-                                                                        className="cursor-pointer"
-                                                                        key={option.value}
-                                                                        value={option.value.toString()}
-                                                                    >
-                                                                        {option.label}
-                                                                    </SelectItem>
-                                                                ),
-                                                            )}
-                                                        </SelectGroup>
-                                                    </SelectContent>
-                                                </Select>
+
+                                                {key === "accessibility" ? (
+                                                    <MultiSelect
+                                                        ref={accessibilityMultiSelectRef}
+                                                        options={
+                                                            filterDropdownOptions.accessibility as {
+                                                                label: string;
+                                                                value: string;
+                                                                style?: {
+                                                                    badgeColor?: string;
+                                                                    iconColor?: string;
+                                                                    gradient?: string;
+                                                                };
+                                                            }[]
+                                                        }
+                                                        defaultValue={
+                                                            filterOptions.accessibility ?? []
+                                                        }
+                                                        onValueChange={(values: string[]) => {
+                                                            setFilterOptions({
+                                                                ...filterOptions,
+                                                                accessibility:
+                                                                    values.length > 0
+                                                                        ? values
+                                                                        : undefined,
+                                                            });
+                                                        }}
+                                                        placeholder={
+                                                            filterPlaceholders.accessibility
+                                                        }
+                                                        className="w-full text-thistle"
+                                                        hideSelectAll
+                                                    />
+                                                ) : (
+                                                    <Select
+                                                        value={filterOptions[key]?.toString()}
+                                                        onValueChange={value =>
+                                                            handleFilterChange(key, value)
+                                                        }
+                                                    >
+                                                        <SelectTrigger className="bg-transparent! w-full text-white">
+                                                            <SelectValue
+                                                                placeholder={
+                                                                    filterPlaceholders[key]
+                                                                }
+                                                            />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            <SelectGroup>
+                                                                {filterDropdownOptions[key].map(
+                                                                    option => (
+                                                                        <SelectItem
+                                                                            key={option.value}
+                                                                            value={option.value.toString()}
+                                                                        >
+                                                                            {option.label}
+                                                                        </SelectItem>
+                                                                    ),
+                                                                )}
+                                                            </SelectGroup>
+                                                        </SelectContent>
+                                                    </Select>
+                                                )}
                                             </div>
                                         ))}
                                     </div>
@@ -446,28 +503,59 @@ export const SearchFilterBar: React.FC<SearchFilterBarProps> = ({
                                         >
                                             {filterPlaceholders[key]}
                                         </label>
-                                        <Select
-                                            value={filterOptions[key]?.toString()}
-                                            onValueChange={value => handleFilterChange(key, value)}
-                                        >
-                                            <SelectTrigger className="bg-transparent! w-full text-white">
-                                                <SelectValue
-                                                    placeholder={filterPlaceholders[key]}
-                                                />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectGroup>
-                                                    {filterDropdownOptions[key].map(option => (
-                                                        <SelectItem
-                                                            key={option.value}
-                                                            value={option.value.toString()}
-                                                        >
-                                                            {option.label}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectGroup>
-                                            </SelectContent>
-                                        </Select>
+
+                                        {key === "accessibility" ? (
+                                            <MultiSelect
+                                                options={
+                                                    filterDropdownOptions.accessibility as {
+                                                        label: string;
+                                                        value: string;
+                                                        style?: {
+                                                            badgeColor?: string;
+                                                            iconColor?: string;
+                                                            gradient?: string;
+                                                        };
+                                                    }[]
+                                                }
+                                                value={filterOptions.accessibility ?? []}
+                                                onValueChange={(values: string[]) => {
+                                                    setFilterOptions({
+                                                        ...filterOptions,
+                                                        accessibility:
+                                                            values.length > 0 ? values : undefined,
+                                                    });
+                                                }}
+                                                placeholder={filterPlaceholders.accessibility}
+                                                className="w-full text-thistle"
+                                                badgeAnimation="none"
+                                                hideSelectAll
+                                            />
+                                        ) : (
+                                            <Select
+                                                value={filterOptions[key]?.toString()}
+                                                onValueChange={value =>
+                                                    handleFilterChange(key, value)
+                                                }
+                                            >
+                                                <SelectTrigger className="bg-transparent! w-full text-white">
+                                                    <SelectValue
+                                                        placeholder={filterPlaceholders[key]}
+                                                    />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectGroup>
+                                                        {filterDropdownOptions[key].map(option => (
+                                                            <SelectItem
+                                                                key={option.value}
+                                                                value={option.value.toString()}
+                                                            >
+                                                                {option.label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectGroup>
+                                                </SelectContent>
+                                            </Select>
+                                        )}
                                     </div>
                                 ))}
                             </div>

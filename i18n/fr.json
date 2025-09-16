@@ -300,9 +300,12 @@
         "filter_placeholder_format": "Sélectionner un format",
         "filter_placeholder_language": "Sélectionner une langue",
         "filter_placeholder_tier": "Sélectionner un niveau",
+        "filter_placeholder_accessibility": "Sélectionner une fonctionnalité d’accessibilité",
         "clear_filters": "Effacer les filtres",
         "clear_all": "Tout effacer",
         "sort_label": "Trier",
+        "filter_accessibility_cc": "Sous-titres",
+        "filter_accessibility_screenreader": "Compatible avec lecteur d'écran",
 
         "pagination_go": "Aller",
         "pagination_previous": "Précédent",
