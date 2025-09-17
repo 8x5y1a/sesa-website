@@ -139,7 +139,10 @@ const ContactForm: React.FC = () => {
                     name="topic"
                     children={field => (
                         <field.Select>
-                            <SelectTrigger className="min-h-[3.5rem] w-full cursor-pointer bg-transparent! font-sans text-thistle">
+                            <SelectTrigger
+                                className="min-h-[3.5rem] w-full cursor-pointer bg-transparent! font-sans text-thistle"
+                                onBlur={field.handleBlur}
+                            >
                                 <SelectValue placeholder={t("form_subject")} />
                             </SelectTrigger>
                             <SelectContent>
