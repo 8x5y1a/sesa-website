@@ -1,12 +1,12 @@
 "use client";
 
 import { format } from "date-fns";
-import createDOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { CalendarClock, MapPin } from "lucide-react";
 import { marked } from "marked";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -153,18 +153,10 @@ export const EventCard = ({ event }: EventCardProps) => {
             ? `${description.slice(0, maxDescriptionLength)}...`
             : description;
 
-    // Only create DOMPurify when in browser
-    const DOMPurify = useMemo(() => {
-        if (typeof window !== "undefined") {
-            return createDOMPurify(window);
-        }
-        return null;
-    }, []);
-
     // Helper function to safely parse markdown
     const parseMarkdown = (markdown: string) => {
         const rawHTML = marked(markdown, { async: false }) as string;
-        return DOMPurify ? DOMPurify.sanitize(rawHTML) : "";
+        return DOMPurify.sanitize(rawHTML);
     };
 
     const dialogBody = parseMarkdown(t("calendar_export"));

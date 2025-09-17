@@ -1,8 +1,7 @@
 "use client";
-import createDOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 import { useTranslations } from "next-intl";
-import { useMemo } from "react";
 import {
     Accordion,
     AccordionContent,
@@ -16,18 +15,10 @@ import { Link } from "@/i18n/navigation";
 const FAQ = () => {
     const t = useTranslations("homepage");
 
-    // Only create DOMPurify when in browser
-    const DOMPurify = useMemo(() => {
-        if (typeof window !== "undefined") {
-            return createDOMPurify(window);
-        }
-        return null;
-    }, []);
-
     // Helper function to safely parse markdown
     const parseMarkdown = (markdown: string) => {
         const rawHTML = marked(markdown, { async: false }) as string;
-        return DOMPurify ? DOMPurify.sanitize(rawHTML) : "";
+        return DOMPurify.sanitize(rawHTML);
     };
 
     // FAQ data structure

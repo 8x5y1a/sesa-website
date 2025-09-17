@@ -1,12 +1,10 @@
 import { TRPCError } from "@trpc/server";
-import DOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
+import DOMPurify from "isomorphic-dompurify";
 import nodemailer from "nodemailer";
 import * as z from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
-const purify = DOMPurify(new JSDOM("<!DOCTYPE html>").window);
-const transformPurify = (text: string) => purify.sanitize(text, { ALLOWED_TAGS: [] });
+const transformPurify = (text: string) => DOMPurify.sanitize(text, { ALLOWED_TAGS: [] });
 
 const EmailRequest = z.object({
     firstName: z.string().transform(transformPurify),

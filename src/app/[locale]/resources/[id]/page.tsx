@@ -1,5 +1,4 @@
-import DOMPurify from "dompurify";
-import { JSDOM } from "jsdom";
+import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -62,9 +61,7 @@ export default async function ResourcePage({ params }: { params: Promise<{ id: s
     // 404 if the resource does not exist
     if (!resource) notFound();
 
-    const resourceBody = DOMPurify(new JSDOM("<!DOCTYPE html>").window).sanitize(
-        await marked(resource.body),
-    );
+    const resourceBody = DOMPurify.sanitize(await marked(resource.body));
     const resourceDate = new Date(resource.date);
 
     return (
