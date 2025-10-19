@@ -159,6 +159,9 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.13)
     devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@tailwindcss/postcss':
         specifier: ^4.1.13
         version: 4.1.13
@@ -201,6 +204,8 @@ importers:
       zod:
         specifier: ^4.0.10
         version: 4.0.10
+
+  packages/typescript-config: {}
 
 packages:
 
