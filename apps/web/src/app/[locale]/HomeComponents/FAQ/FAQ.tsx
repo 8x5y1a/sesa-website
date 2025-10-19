@@ -1,16 +1,16 @@
 "use client";
-import createDOMPurify from "dompurify";
-import { marked } from "marked";
-import { useTranslations } from "next-intl";
-import { useMemo } from "react";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import Star from "@/components/ui/decorations/star";
+} from "@repo/ui/components/accordion";
+import { Button } from "@repo/ui/components/button";
+import Star from "@repo/ui/components/decorations/star";
+import createDOMPurify from "dompurify";
+import { marked } from "marked";
+import { useTranslations } from "next-intl";
+import { useMemo } from "react";
 import { Link } from "@/i18n/navigation";
 
 const FAQ = () => {

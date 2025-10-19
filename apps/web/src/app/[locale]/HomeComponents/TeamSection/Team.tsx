@@ -1,12 +1,12 @@
 "use client";
+import { Button } from "@repo/ui/components/button";
+import Star from "@repo/ui/components/decorations/star";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { membersData } from "@/app/data/Members";
 import CircleImage from "@/components/CircleImage";
-import { Button } from "@/components/ui/button";
-import Star from "@/components/ui/decorations/star";
 import { Link } from "@/i18n/navigation";
 
 const Team = () => {
