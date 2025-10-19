@@ -238,7 +238,7 @@ importers:
         specifier: ^19.1.6
         version: 19.2.2(@types/react@19.2.2)
       tailwindcss:
-        specifier: ^4.1.11
+        specifier: ^4.1.13
         version: 4.1.13
       typescript:
         specifier: 'catalog:'
