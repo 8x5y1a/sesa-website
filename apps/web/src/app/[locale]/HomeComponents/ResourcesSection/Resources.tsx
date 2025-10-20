@@ -1,11 +1,11 @@
 "use client";
 
 import { Button } from "@repo/ui/components/button";
-import Star from "@repo/ui/components/decorations/star";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 import Marquee from "react-fast-marquee";
+import Star from "@/components/decorations/star";
 import { Link, useRouter } from "@/i18n/navigation";
 import { api } from "@/trpc/react";
 import ResourceCard from "../../resources/components/ResourceCard/ResourceCard";

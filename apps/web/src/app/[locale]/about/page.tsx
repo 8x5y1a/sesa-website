@@ -1,5 +1,4 @@
 import { Button } from "@repo/ui/components/button";
-import Star from "@repo/ui/components/decorations/star";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -8,6 +7,7 @@ import { useMemo } from "react";
 // Precompile i18n
 import localeParams from "@/app/data/locales";
 import { membersData } from "@/app/data/Members";
+import Star from "@/components/decorations/star";
 import FadeInSection from "@/components/FadeInSection";
 import Metric from "@/components/Metric";
 import { TeamBadgeStack } from "@/components/TeamBadgeStack";

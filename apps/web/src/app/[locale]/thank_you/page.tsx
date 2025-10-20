@@ -1,10 +1,10 @@
 import { Button } from "@repo/ui/components/button";
-import Star from "@repo/ui/components/decorations/star";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 // Precompile i18n
 import localeParams from "@/app/data/locales";
+import Star from "@/components/decorations/star";
 import { Link } from "@/i18n/navigation";
 export const generateStaticParams = localeParams;
 

@@ -1,6 +1,6 @@
 import { Button } from "@repo/ui/components/button";
-import Star from "@repo/ui/components/decorations/star";
 import Image from "next/image";
+import Star from "@/components/decorations/star";
 import { Link } from "@/i18n/navigation";
 
 interface SponsorsHeaderProps {
