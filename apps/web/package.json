@@ -39,6 +39,7 @@
         "@repo/typescript-config": "workspace:*",
         "@repo/ui": "workspace:*",
         "@repo/env": "workspace:*",
+        "@repo/db": "workspace:*",
         "@tailwindcss/postcss": "^4.1.13",
         "@types/jsdom": "latest",
         "@types/node": "^20",
