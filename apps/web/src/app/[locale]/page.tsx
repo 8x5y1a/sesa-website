@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { NextResponse } from "next/server";
 import { getLocale, getTranslations } from "next-intl/server";
 import localeParams from "@/app/data/locales";
@@ -12,7 +13,6 @@ import Quotes from "./HomeComponents/QuotesSection/Quotes";
 import Resources from "./HomeComponents/ResourcesSection/Resources";
 import Sponsors from "./HomeComponents/SponsorSection/Sponsors";
 import Team from "./HomeComponents/TeamSection/Team";
-import type { Metadata } from "next";
 export const generateStaticParams = localeParams;
 
 export async function generateMetadata(): Promise<Metadata> {
