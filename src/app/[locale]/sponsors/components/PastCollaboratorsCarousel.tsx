@@ -71,9 +71,7 @@ const PastCollaboratorsCarousel = () => {
                     {t("past_collaborators_top")}
                 </p>
                 <h2 className="font-heading text-2xl text-white uppercase md:text-3xl">
-                    <span className="highlight-text">
-                        {t("past_collaborators_highlight")}
-                    </span>{" "}
+                    <span className="highlight-text">{t("past_collaborators_highlight")}</span>{" "}
                     {t("past_collaborators_title_rest")}
                 </h2>
                 <p className="max-w-xl text-base text-thistle md:text-lg">
@@ -83,12 +81,7 @@ const PastCollaboratorsCarousel = () => {
 
             {/* Marquee Carousel */}
             <div className="relative mt-8 w-full">
-                <Marquee
-                    speed={40}
-                    gradient={false}
-                    pauseOnHover={true}
-                    autoFill
-                >
+                <Marquee speed={40} gradient={false} pauseOnHover={true} autoFill>
                     {logos.concat(logos).map((logo, index) => (
                         <div
                             key={index}

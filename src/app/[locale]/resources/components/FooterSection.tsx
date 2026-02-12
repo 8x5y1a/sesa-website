@@ -81,9 +81,7 @@ const FooterSection: React.FC = () => {
                 <div className="z-10 mx-5 max-w-lg text-left text-white">
                     <div className="font-heading text-2xl uppercase">
                         “{t("education_quote_1")}{" "}
-                        <span className="highlight-text">
-                            {t("education_quote_1_hl")}
-                        </span>{" "}
+                        <span className="highlight-text">{t("education_quote_1_hl")}</span>{" "}
                         {t("education_quote_2")}.”
                     </div>
                     <div className="my-3 flex items-center gap-4">
@@ -95,20 +93,13 @@ const FooterSection: React.FC = () => {
                             height={50}
                         />
                         <div>
-                            <p className="z-20 mt-4 font-heading text-xl">
-                                ANGE EMMANUEL
-                            </p>
-                            <p className="text-sm opacity-70">
-                                {t("academic_lead")}
-                            </p>
+                            <p className="z-20 mt-4 font-heading text-xl">ANGE EMMANUEL</p>
+                            <p className="text-sm opacity-70">{t("academic_lead")}</p>
                         </div>
                     </div>
                     {/* Call To Action Button */}
                     <div className="mt-6">
-                        <Button
-                            asChild
-                            className="relative z-10 font-heading text-lg uppercase"
-                        >
+                        <Button asChild className="relative z-10 font-heading text-lg uppercase">
                             <Link href="/about" className="block text-inherit">
                                 {t("btn_meet_the_team")}
                             </Link>

@@ -78,11 +78,11 @@ export default function Benefits() {
     const cardWidthVW = isMobile ? 60 : 28;
 
     const handlePrev = () => {
-        setCurrentIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
+        setCurrentIndex(prev => (prev === 0 ? cards.length - 1 : prev - 1));
     };
 
     const handleNext = () => {
-        setCurrentIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
+        setCurrentIndex(prev => (prev === cards.length - 1 ? 0 : prev + 1));
     };
 
     return (
@@ -109,15 +109,9 @@ export default function Benefits() {
                         {t("benefits_top")}
                     </p>
                     <h2 className="mb-4 font-heading text-2xl text-white uppercase md:text-3xl">
-                        <span className="block md:inline">
-                            {t("benefits_title_part1")}
-                        </span>{" "}
-                        <span className="highlight-text">
-                            {t("benefits_title_highlight")}
-                        </span>{" "}
-                        <span className="block md:inline">
-                            {t("benefits_title_part3")}
-                        </span>
+                        <span className="block md:inline">{t("benefits_title_part1")}</span>{" "}
+                        <span className="highlight-text">{t("benefits_title_highlight")}</span>{" "}
+                        <span className="block md:inline">{t("benefits_title_part3")}</span>
                     </h2>
 
                     <p className="max-w-full text-base text-thistle leading-tight md:mb-4 md:max-w-2xl md:text-lg">
@@ -163,11 +157,7 @@ export default function Benefits() {
                             <div className="flex h-full flex-col overflow-hidden border border-solid text-left text-white backdrop-blur-super [border-image:linear-gradient(55deg,rgba(136,36,220,0.3)_41.93%,rgba(177,33,157,0.3)_81.89%)_1]">
                                 <Image
                                     src={card.image}
-                                    alt={
-                                        locale === "fr"
-                                            ? card.title.fr
-                                            : card.title.en
-                                    }
+                                    alt={locale === "fr" ? card.title.fr : card.title.en}
                                     width={500}
                                     height={300}
                                     className="h-40 w-full object-cover md:h-48 2xl:h-96"
@@ -184,9 +174,7 @@ export default function Benefits() {
                                             />
                                         </div>
                                         <div className="mb-2 font-heading text-base text-white uppercase leading-snug md:text-lg">
-                                            {locale === "fr"
-                                                ? card.title.fr
-                                                : card.title.en}
+                                            {locale === "fr" ? card.title.fr : card.title.en}
                                         </div>
                                         <p className="font-sans text-sm text-thistle leading-snug md:text-lg">
                                             {locale === "fr"
